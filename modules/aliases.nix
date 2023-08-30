@@ -12,5 +12,5 @@
   gp = "git push";
   ta = "tmux attach";
   ngc = "sudo nix-collect-garbage -d";
-  nec = "sudo nvim -u $HOME/.config/nvim/init.lua --cmd 'cd /etc/nixos'";
+  nec = "sudo -E nvim -u $HOME/.config/nvim/init.lua --cmd 'cd /etc/nixos'";
 }
