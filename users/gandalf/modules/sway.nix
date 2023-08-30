@@ -178,7 +178,7 @@ in
       seat = {
         "*" = {
           xcursor_theme = common.gtk;
-	};
+        };
       };
       window = {
         titlebar = false;
