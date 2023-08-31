@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 let
   aliases = import ../../modules/aliases.nix;
 in
@@ -18,6 +18,9 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = {
+    inherit unstable;
+  };
 
   home-manager.users.gandalf = { pkgs, ... }: {
     imports = [ ./modules ];

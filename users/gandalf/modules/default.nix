@@ -5,6 +5,7 @@
     ./git.nix
     ./gnupg.nix
     ./neovim.nix
+    ./ssh.nix
     ./sway.nix
     ./tmux.nix
     ./udiskie.nix
