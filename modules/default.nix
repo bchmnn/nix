@@ -16,6 +16,7 @@
     ./print.nix
     ./security.nix
     ./shell.nix
+    ./udisks2.nix
     ./unfree.nix
     ./xdg-portal.nix
   ];

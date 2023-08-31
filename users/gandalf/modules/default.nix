@@ -7,6 +7,7 @@
     ./neovim.nix
     ./sway.nix
     ./tmux.nix
+    ./udiskie.nix
     ./vscode.nix
     ./waybar.nix
     ./wofi.nix
