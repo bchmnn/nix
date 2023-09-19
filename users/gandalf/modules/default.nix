@@ -6,6 +6,8 @@
     ./gnupg.nix
     ./keyring.nix
     ./neovim.nix
+    ./obs.nix
+    ./packages.nix
     ./playerctl.nix
     ./spotify-player
     ./ssh.nix

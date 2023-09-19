@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.wayland.windowManager.sway.config;
   common = import ./common.nix;
+  wallpaper = pkgs.fetchurl {
+    url = "https://live.staticflickr.com/65535/52797919139_2444712a38_o_d.png";
+    sha256 = "1a9148d8911fa25afa82d3b843ee620173955a7ca705d525f3e9d00e00696308";
+    meta.licenses = lib.licenses.cc0;
+  };
 in
 {
   home.packages = with pkgs; [
@@ -68,6 +73,9 @@ in
           accel_profile = "flat";
           scroll_factor = "0.5";
         };
+      };
+      output = {
+        "*".bg = "${wallpaper} fill";
       };
       left = "h";
       down = "j";
