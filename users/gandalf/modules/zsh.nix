@@ -3,6 +3,8 @@
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
+    /*
     plugins = [
       {
         name = "zsh-syntax-highlighting";
@@ -14,6 +16,7 @@
         };
       }
     ];
+    */
     oh-my-zsh = {
       enable = true;
       theme = "terminalparty";

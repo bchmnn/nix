@@ -4,9 +4,13 @@
     ./fzf.nix
     ./git.nix
     ./gnupg.nix
+    ./keyring.nix
     ./neovim.nix
+    ./playerctl.nix
+    ./spotify-player
     ./ssh.nix
     ./sway.nix
+    ./swaync
     ./tmux.nix
     ./udiskie.nix
     ./vscode.nix

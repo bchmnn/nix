@@ -7,6 +7,7 @@ in
   home.packages = with pkgs; [
     brightnessctl # control screen brightness
     pavucontrol # control audio
+    playerctl # control player
     networkmanagerapplet # control network
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
@@ -51,6 +52,7 @@ in
       startup = [
         { command = "blueman-applet"; }
         { command = "nm-applet"; }
+        { command = "swaync"; }
       ];
       input = {
         "2:7:SynPS/2_Synaptics_TouchPad" = {
@@ -160,15 +162,16 @@ in
         "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -q set 5%-";
         "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -q set 5%+";
 
-        # "XF86AudioPrev" = "exec ${pkgs.mpc_cli}/bin/mpc -q next";
-        # "XF86AudioNext" = "exec ${pkgs.mpc_cli}/bin/mpc -q prev";
-        # "XF86AudioPlay" = "exec ${pkgs.mpc_cli}/bin/mpc -q toggle";
-        # "XF86AudioPause" = "exec ${pkgs.mpc_cli}/bin/mpc -q toggle";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+        "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
 
         # Programs
         "${cfg.modifier}+Shift+v" = "exec ${pkgs.pavucontrol}/bin/pavucontrol";
         "${cfg.modifier}+Shift+b" = "exec ${pkgs.blueman}/bin/blueman-manager";
         "${cfg.modifier}+Shift+n" = "exec ${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+        "${cfg.modifier}+Shift+a" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
       };
       fonts = {
         names = [ common.font ];

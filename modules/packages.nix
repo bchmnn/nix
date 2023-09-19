@@ -11,6 +11,8 @@
     lsd
     ripgrep
     expect # contains 'unbuffer'
+    # libs
+    libnotify
     # languages
     gcc13
     go
