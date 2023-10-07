@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     pciutils
+    qt5.qtwayland
     qt6.qtwayland
     xdg-utils # for opening default programs
     glib # gsettings
@@ -20,6 +21,6 @@
     javaPackages.openjfx17
     gradle_7
     python312
-    nodejs_20
+    nodenv
   ];
 }

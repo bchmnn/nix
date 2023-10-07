@@ -1,14 +1,20 @@
 { config, pkgs, lib, ... }:
 let
+
   cfg = config.wayland.windowManager.sway.config;
   common = import ./common.nix;
+
   wallpaper = pkgs.fetchurl {
     url = "https://live.staticflickr.com/65535/52797919139_2444712a38_o_d.png";
     sha256 = "1a9148d8911fa25afa82d3b843ee620173955a7ca705d525f3e9d00e00696308";
     meta.licenses = lib.licenses.cc0;
   };
+
+  # flameshot = pkgs.libsForQt5.callPackage ./flameshot/build.nix { };
+
 in
 {
+
   home.packages = with pkgs; [
     brightnessctl # control screen brightness
     pavucontrol # control audio
@@ -16,12 +22,16 @@ in
     networkmanagerapplet # control network
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
-    # wdisplays # graphical output manager
-    # wev # wayland event monitor
     wl-clipboard # cli tool to manage wayland clipboard
-    # wl-mirror # emulation for “mirror display” mode
-    # wlr-randr # output management that actually works
+    sway-contrib.grimshot
+    wdisplays
+    wlr-randr
   ];
+
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -44,6 +54,7 @@ in
       export SDL_VIDEODRIVER=wayland
       # QT (needs qt5.qtwayland in systemPackages):
       export QT_QPA_PLATFORM=wayland-egl
+      # export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       # Fix for some Java AWT applications (e.g. Android Studio),
       # use this if they aren't displayed properly:
@@ -81,7 +92,10 @@ in
       down = "j";
       up = "k";
       right = "l";
+
       keybindings = {
+        "${cfg.modifier}+Ctrl+Shift+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ffffff --key-hl-color ${common.colorschemes.default._activeDark} --line-color 00000000 --inside-color 00000088 --inside-ver-color ${common.colorschemes.default._activeDark} --separator-color 00000000 --text-color ${common.colorschemes.default._activeDark} --fade-in 0.1";
+
         # Basics
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
         "${cfg.modifier}+q" = "kill";
@@ -174,6 +188,9 @@ in
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+
+        # Screenshot
+        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
 
         # Programs
         "${cfg.modifier}+Shift+v" = "exec ${pkgs.pavucontrol}/bin/pavucontrol";
@@ -287,5 +304,6 @@ in
       # ^-- resize again, case moving to different output
     '';
   };
+
 }
 

@@ -13,11 +13,12 @@
     ./opengl.nix
     ./power.nix
     ./packages.nix
-    ./print.nix
+    ./printing.nix
     ./security.nix
     ./shell.nix
     ./udisks2.nix
     ./unfree.nix
+    ./virtualisation.nix
     ./xdg-portal.nix
   ];
 }

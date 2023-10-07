@@ -1,19 +1,11 @@
-{ pkgs, unstable, ... }:
+{ unstable, ... }:
 let
   aliases = import ../../modules/aliases.nix;
 in
 {
   users.users.gandalf = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
-    packages = with pkgs; [
-      firefox
-      speechd # https://support.mozilla.org/en-US/kb/speechd-setup
-      gopass
-      gopass-jsonapi
-      gnome.nautilus
-      gimp
-    ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
   };
 
   home-manager.useGlobalPkgs = true;

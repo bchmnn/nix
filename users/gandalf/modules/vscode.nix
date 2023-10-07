@@ -59,6 +59,20 @@ in
         "**/__pycache__" = true;
       };
 
+      "vim.normalModeKeyBindingsNonRecursive" = [
+        {
+          "before" = [ "<C-p>" ];
+          "commands" = [ "workbench.action.quickOpen" ];
+        }
+        {
+          "before" = [ "<C-b>" ];
+          "commands" = [
+            "workbench.view.explorer"
+            "workbench.action.toggleSidebarVisibility"
+          ];
+        }
+      ];
+
       "[html]" = {
         "editor.tabSize" = 2;
         "editor.insertSpaces" = true;

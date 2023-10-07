@@ -25,6 +25,7 @@
           ./modules
 
           home-manager.nixosModules.home-manager
+
           {
             imports = [ ./users/gandalf ];
           }

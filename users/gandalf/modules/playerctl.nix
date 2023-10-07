@@ -4,10 +4,4 @@
     playerctl
   ];
 
-  /*
-  services.playerctld = {
-    enable = true;
-  };
-  */
-
 }

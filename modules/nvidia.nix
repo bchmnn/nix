@@ -1,5 +1,7 @@
-{ ... }: {
-  /*
+{ config, ... }: {
+
+  # services.xserver.videoDrivers = [ "nouveau" ];
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
@@ -10,6 +12,7 @@
     open = false;
     # Enable the nvidia settings menu
     nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
   };
-  */
+
 }

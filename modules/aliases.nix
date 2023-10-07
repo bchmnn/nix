@@ -15,5 +15,4 @@
   nec = "sudo -E nvim -u $HOME/.config/nvim/init.lua --cmd 'cd /etc/nixos'";
   ncc = "sudo nixos-rebuild switch --upgrade-all --flake /etc/nixos";
   nup = "sudo nix-channel --update && sudo nixos-rebuild switch --upgrade-all --flake /etc/nixos";
-  spt = "spotify_player";
 }

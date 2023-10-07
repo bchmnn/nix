@@ -1,15 +1,18 @@
 {
   imports = [
     ./alacritty.nix
+    ./chromium.nix
+    ./dconf.nix
     ./fzf.nix
     ./git.nix
     ./gnupg.nix
+    ./kanshi.nix
     ./keyring.nix
     ./neovim.nix
     ./obs.nix
     ./packages.nix
     ./playerctl.nix
-    ./spotify-player
+    ./spotify
     ./ssh.nix
     ./sway.nix
     ./swaync

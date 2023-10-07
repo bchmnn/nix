@@ -1,0 +1,1 @@
+import ./flameshot.nix
