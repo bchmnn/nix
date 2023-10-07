@@ -12,7 +12,6 @@
     ./obs.nix
     ./packages.nix
     ./playerctl.nix
-    ./spotify
     ./ssh.nix
     ./sway.nix
     ./swaync
