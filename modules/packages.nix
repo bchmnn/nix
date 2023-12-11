@@ -3,6 +3,7 @@
     pciutils
     usbutils
     git
+    gnumake
     mercurial # contains 'hg'
     wget
     neofetch
@@ -10,6 +11,7 @@
     ripgrep
     expect # contains 'unbuffer'
     jq # parse json
+    unzip
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
@@ -21,6 +23,8 @@
     nodenv
     rustc
     cargo
+    nodejs_21
+    lua
   ] ++ lib.optionals (gui.enable) [
     libnotify
     glib # gsettings

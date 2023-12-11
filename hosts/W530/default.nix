@@ -14,7 +14,7 @@
     audio.enable = true;
     bluetooth.enable = true;
     vpn.enable = true;
-    
+
     devenv.enable = true;
     virtualisation.enable = true;
     games.enable = true;

@@ -5,7 +5,7 @@
     ./gui
     ./git.nix
     ./gnupg.nix
-    ./neovim.nix
+    ./neovim
     ./packages.nix
     ./ssh.nix
     ./tmux.nix
