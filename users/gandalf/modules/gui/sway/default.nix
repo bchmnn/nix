@@ -1,19 +1,18 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
 
   cfg = config.wayland.windowManager.sway.config;
-  common = import ./common.nix;
-
-  wallpaper = pkgs.fetchurl {
-    url = "https://live.staticflickr.com/65535/52797919139_2444712a38_o_d.png";
-    sha256 = "1a9148d8911fa25afa82d3b843ee620173955a7ca705d525f3e9d00e00696308";
-    meta.licenses = lib.licenses.cc0;
-  };
-
-  # flameshot = pkgs.libsForQt5.callPackage ./flameshot/build.nix { };
+  common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 
 in
 {
+
+  imports = [
+    ./kanshi.nix
+    ./swaync
+    ./waybar.nix
+    ./wofi.nix
+  ];
 
   home.packages = with pkgs; [
     brightnessctl # control screen brightness
@@ -26,6 +25,9 @@ in
     sway-contrib.grimshot
     wdisplays
     wlr-randr
+    kanshi # display manager
+    nextcloud-client # self hosted cloud client
+    plasma5Packages.kdeconnect-kde # sync phone and pc
   ];
 
   programs.swaylock = {
@@ -60,15 +62,27 @@ in
       # use this if they aren't displayed properly:
       export _JAVA_AWT_WM_NONREPARENTING=1
       export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on";
+
+      # Nvidia
+      # export WLR_RENDERER=vulkan;
+      # export GBM_BACKEND=nvidia-drm;
+      # export __GL_GSYNC_ALLOWED=0;
+      # export __GL_VRR_ALLOWED=0;
+      # export __GLX_VENDOR_LIBRARY_NAME=nvidia;
+      # Xwayland compat
+      # export XWAYLAND_NO_GLAMOR=1;
     '';
     config = {
       modifier = "Mod4";
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.wofi}/bin/wofi";
-      startup = [
-        { command = "blueman-applet"; }
-        { command = "nm-applet"; }
-        { command = "swaync"; }
+      startup = with pkgs; [
+        { command = "${kanshi}/bin/kanshi"; }
+        { command = "${networkmanagerapplet}/bin/nm-applet"; }
+        { command = "${blueman}/bin/blueman-applet"; }
+        { command = "${swaynotificationcenter}/bin/swaync"; }
+        { command = "${nextcloud-client}/bin/nextcloud"; }
+        { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
       ];
       input = {
         "2:7:SynPS/2_Synaptics_TouchPad" = {
@@ -86,7 +100,7 @@ in
         };
       };
       output = {
-        "*".bg = "${wallpaper} fill";
+        "*".bg = "${common.wallpaper} fill";
       };
       left = "h";
       down = "j";
@@ -109,21 +123,14 @@ in
         "${cfg.modifier}+${cfg.up}" = "focus up";
         "${cfg.modifier}+${cfg.right}" = "focus right";
 
-        "${cfg.modifier}+Left" = "focus left";
-        "${cfg.modifier}+Down" = "focus down";
-        "${cfg.modifier}+Up" = "focus up";
-        "${cfg.modifier}+Right" = "focus right";
+        "${cfg.modifier}+p" = "focus output left";
+        "${cfg.modifier}+n" = "focus output right";
 
         # Moving
         "${cfg.modifier}+Shift+${cfg.left}" = "move left";
         "${cfg.modifier}+Shift+${cfg.down}" = "move down";
         "${cfg.modifier}+Shift+${cfg.up}" = "move up";
         "${cfg.modifier}+Shift+${cfg.right}" = "move right";
-
-        "${cfg.modifier}+Shift+Left" = "move left";
-        "${cfg.modifier}+Shift+Down" = "move down";
-        "${cfg.modifier}+Shift+Up" = "move up";
-        "${cfg.modifier}+Shift+Right" = "move right";
 
         # Workspaces
         "${cfg.modifier}+1" = "workspace number 1";
@@ -301,6 +308,7 @@ in
 
       # show existing or start new dropdown terminal
       bindsym ${cfg.modifier}+grave exec swaymsg '[app_id="$ddterm-id"] scratchpad show' || $ddterm && sleep .1 && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
+      bindsym ${cfg.modifier}+Escape exec swaymsg '[app_id="$ddterm-id"] scratchpad show' || $ddterm && sleep .1 && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
       # ^-- resize again, case moving to different output
     '';
   };

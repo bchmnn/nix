@@ -15,4 +15,6 @@
   nec = "sudo -E nvim -u $HOME/.config/nvim/init.lua --cmd 'cd /etc/nixos'";
   ncc = "sudo nixos-rebuild switch --upgrade-all --flake /etc/nixos";
   nup = "sudo nix-channel --update && sudo nixos-rebuild switch --upgrade-all --flake /etc/nixos";
+  nuf = "sudo nix flake update --nix-path /etc/nixos && sudo nixos-rebuild switch --upgrade-all --flake /etc/nixos";
+  wip = "curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq";
 }

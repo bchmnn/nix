@@ -21,8 +21,8 @@
         specialArgs = inputs;
         modules = [
 
-          ./hosts/W530
           ./modules
+          ./hosts/W530
 
           home-manager.nixosModules.home-manager
 

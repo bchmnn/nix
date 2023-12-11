@@ -1,6 +1,6 @@
-{ ... }:
+{ pkgs, lib, ... }:
 let
-  common = import ./common.nix;
+  common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 in
 {
   # alacritty - a cross-platform, GPU-accelerated terminal emulator

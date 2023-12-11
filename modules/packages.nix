@@ -1,10 +1,7 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
+{ lib, pkgs, config, ... }: {
+  environment.systemPackages = with pkgs; with config.bchmnn; [
     pciutils
-    qt5.qtwayland
-    qt6.qtwayland
-    xdg-utils # for opening default programs
-    glib # gsettings
+    usbutils
     git
     mercurial # contains 'hg'
     wget
@@ -12,8 +9,8 @@
     lsd
     ripgrep
     expect # contains 'unbuffer'
-    # libs
-    libnotify
+    jq # parse json
+  ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
     go
@@ -22,5 +19,14 @@
     gradle_7
     python312
     nodenv
+    rustc
+    cargo
+  ] ++ lib.optionals (gui.enable) [
+    libnotify
+    glib # gsettings
+    xdg-utils # for opening default programs
+  ] ++ lib.optionals (gui.enable && lib.elem "sway" gui.flavour) [
+    qt5.qtwayland
+    qt6.qtwayland
   ];
 }

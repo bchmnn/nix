@@ -1,4 +1,4 @@
-{
+{ pkgs, lib, ... }: {
   colorschemes = rec {
     custom = {
       black = "#000000";
@@ -18,4 +18,10 @@
   font = "DejaVuSansM Nerd Font";
   font-size = "14";
   gtk = "Adwaita";
+
+  wallpaper = pkgs.fetchurl {
+    url = "https://live.staticflickr.com/65535/52797919139_2444712a38_o_d.png";
+    sha256 = "1a9148d8911fa25afa82d3b843ee620173955a7ca705d525f3e9d00e00696308";
+    meta.licenses = lib.licenses.cc0;
+  };
 }

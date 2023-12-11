@@ -1,8 +1,8 @@
-{ config, ... }: {
+{ config, lib, pkgs, ... }: lib.mkIf config.bchmnn.nvidia.enable {
 
-  # services.xserver.videoDrivers = [ "nouveau" ];
+  services.xserver.videoDrivers = [ "nouveau" ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is needed for most Wayland compositors

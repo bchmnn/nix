@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, lib, ... }: lib.mkIf config.bchmnn.audio.enable {
   # Enable pipewire - audio
   services.pipewire = {
     enable = true;

@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
-  common = import ./common.nix;
+  common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 in
 {
   programs.vscode = {

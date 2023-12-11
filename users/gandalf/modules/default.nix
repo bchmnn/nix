@@ -1,25 +1,15 @@
 {
   imports = [
-    ./alacritty.nix
-    ./chromium.nix
     ./dconf.nix
     ./fzf.nix
+    ./gui
     ./git.nix
     ./gnupg.nix
-    ./kanshi.nix
-    ./keyring.nix
     ./neovim.nix
-    ./obs.nix
     ./packages.nix
-    ./playerctl.nix
     ./ssh.nix
-    ./sway.nix
-    ./swaync
     ./tmux.nix
     ./udiskie.nix
-    ./vscode.nix
-    ./waybar.nix
-    ./wofi.nix
     ./zsh.nix
   ];
 }

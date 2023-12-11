@@ -22,6 +22,11 @@ let
       sha256 = "565fff2ed6a3c4c98daf7a2b56aad386c2d076f4f5b88199785593eb380eb3d4";
       meta.licenses = lib.licenses.publicDomain;
     };
+    whatsapp = pkgs.fetchurl {
+      url = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png";
+      sha256 = "65b4eeab9b5a02c46f75f26abeac3c72a479cf8fce829b7f9c46f59e9a7f9785";
+      meta.licenses = lib.licenses.publicDomain;
+    };
   };
 
 in
@@ -67,6 +72,14 @@ in
       Exec=${pkgs.chromium}/bin/chromium --app=https://outlook.office365.com/mail
       Terminal=false
       Icon=${icons.outlook}
+    '';
+    "applications/whatsapp.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=WhatsApp
+      Exec=${pkgs.chromium}/bin/chromium --app=https://web.whatsapp.com
+      Terminal=false
+      Icon=${icons.whatsapp}
     '';
   };
 
