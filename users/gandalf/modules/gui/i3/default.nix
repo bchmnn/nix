@@ -183,5 +183,8 @@ in {
         "${cfg.modifier}+Shift+a" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
       };
     };
+    extraConfig = ''
+      exec --no-startup-id ${pkgs.i3}/bin/i3-msg 'workspace 1'
+    '';
   };
 }

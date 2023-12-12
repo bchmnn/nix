@@ -310,6 +310,8 @@ in
       bindsym ${cfg.modifier}+grave exec swaymsg '[app_id="$ddterm-id"] scratchpad show' || $ddterm && sleep .1 && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
       bindsym ${cfg.modifier}+Escape exec swaymsg '[app_id="$ddterm-id"] scratchpad show' || $ddterm && sleep .1 && swaymsg '[app_id="$ddterm-id"] $ddterm-resize'
       # ^-- resize again, case moving to different output
+
+      workspace 1
     '';
   };
 
