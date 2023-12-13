@@ -19,6 +19,7 @@ in
     pavucontrol # control audio
     playerctl # control player
     networkmanagerapplet # control network
+    udiskie # automount usb
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     wl-clipboard # cli tool to manage wayland clipboard
@@ -80,6 +81,7 @@ in
         { command = "${kanshi}/bin/kanshi"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }
+        { command = "${udiskie}/bin/udiskie --tray"; }
         { command = "${swaynotificationcenter}/bin/swaync"; }
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }

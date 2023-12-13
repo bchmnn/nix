@@ -16,5 +16,5 @@
   nup = "sudo nix-channel --update";
   nuf = "sudo nix flake update --nix-path /etc/nixos";
   ngc = "sudo nix-collect-garbage -d";
-  wip = "curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq";
+  lsip = "curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq";
 }

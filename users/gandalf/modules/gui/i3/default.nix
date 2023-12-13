@@ -20,6 +20,7 @@ in {
     pavucontrol # control audio
     playerctl # control player
     networkmanagerapplet # control network
+    udiskie # automount usb
     blueman # control bluetooth
     nextcloud-client # nextcloud client to connect to any instance
     plasma5Packages.kdeconnect-kde # sync phone and pc
@@ -35,6 +36,7 @@ in {
         { command = "${feh}/bin/feh --bg-fill ${common.wallpaper}"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }
+        { command = "${udiskie}/bin/udiskie --tray"; }
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
       ];

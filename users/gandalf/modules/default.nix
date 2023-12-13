@@ -9,7 +9,6 @@
     ./packages.nix
     ./ssh.nix
     ./tmux.nix
-    ./udiskie.nix
     ./zsh.nix
   ];
 }
