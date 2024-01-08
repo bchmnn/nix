@@ -12,6 +12,7 @@
     expect # contains 'unbuffer'
     jq # parse json
     unzip
+    libsecret
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13

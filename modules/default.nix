@@ -67,6 +67,7 @@
     ./power.nix
     ./packages.nix
     ./printing.nix
+    ./sddm.nix
     ./security.nix
     ./shell.nix
     ./steam.nix

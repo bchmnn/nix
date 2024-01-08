@@ -19,6 +19,7 @@
     gnome.simple-scan
     telegram-desktop
     signal-desktop
+    zathura
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer
   ];

@@ -79,6 +79,9 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.wofi}/bin/wofi";
       startup = with pkgs; [
+        # TODO activate with systemd prbly requires a graphical.target?
+        # { command = "${dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
+        { command = "${dbus}/bin/dbus-update-activation-environment --all"; }
         { command = "${kanshi}/bin/kanshi"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }
