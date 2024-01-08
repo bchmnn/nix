@@ -24,6 +24,7 @@ in {
     blueman # control bluetooth
     nextcloud-client # nextcloud client to connect to any instance
     plasma5Packages.kdeconnect-kde # sync phone and pc
+    system-config-printer # printer manager
   ];
 
   xsession.windowManager.i3 = {
@@ -39,6 +40,7 @@ in {
         { command = "${udiskie}/bin/udiskie --tray"; }
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
+        { command = "${system-config-printer}/bin/system-config-printer-applet"; }
       ];
       fonts = {
         names = [ common.font ];

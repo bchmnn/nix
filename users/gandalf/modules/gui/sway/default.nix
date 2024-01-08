@@ -29,6 +29,7 @@ in
     kanshi # display manager
     nextcloud-client # self hosted cloud client
     plasma5Packages.kdeconnect-kde # sync phone and pc
+    system-config-printer # printer manager
   ];
 
   programs.swaylock = {
@@ -85,6 +86,7 @@ in
         { command = "${swaynotificationcenter}/bin/swaync"; }
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
+        { command = "${system-config-printer}/bin/system-config-printer-applet"; }
       ];
       input = {
         "2:7:SynPS/2_Synaptics_TouchPad" = {
