@@ -27,6 +27,10 @@
       enable = mkEnableOption "bluetooth";
     };
 
+    printing = {
+      enable = mkEnableOption "printing";
+    };
+
     vpn = {
       enable = mkEnableOption "vpn";
     };

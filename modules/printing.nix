@@ -1,5 +1,4 @@
-{ pkgs, config, ... }: {
-  # Enable CUPS to print documents.
+{ pkgs, lib, config, ... }: lib.mkIf config.bchmnn.printing.enable {
   services.printing = {
     enable = true;
     drivers = [
@@ -24,8 +23,4 @@
     ];
     ensureDefaultPrinter = "Brother-MFC-L3750CDW-series";
   };
-
-  environment.systemPackages = with pkgs; with config.bchmnn; lib.optionals (gui.enable) [
-    system-config-printer
-  ];
 }

@@ -13,6 +13,7 @@
     nvidia.enable = false;
     audio.enable = true;
     bluetooth.enable = true;
+    printing.enable = true;
     vpn.enable = true;
 
     devenv.enable = true;

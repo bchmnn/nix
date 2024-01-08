@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, nixosConfig, ... }: {
 
   imports = [
     ./alacritty.nix
@@ -19,6 +19,8 @@
     gnome.simple-scan
     telegram-desktop
     signal-desktop
+  ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
+    system-config-printer
   ];
 
 }
