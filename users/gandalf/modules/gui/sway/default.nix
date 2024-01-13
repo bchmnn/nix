@@ -300,6 +300,18 @@ in
         move position 100ppt 0
         move left 700px
       }
+      for_window [app_id="com.nextcloud.desktopclient.nextcloud" title="Nextcloud"] {
+        floating enable
+        resize set 700px 450px
+        move position 100ppt 0
+        move left 700px
+      }
+      for_window [title="Extension: \(Gopass Bridge\) - gopass bridge — Mozilla Firefox"] {
+        floating enable
+        resize set 700px 450px
+        move position 100ppt 0
+        move left 700px
+      }
 
       set $ddterm-id dropdown-terminal
       set $ddterm ${cfg.terminal} --class $ddterm-id
