@@ -5,6 +5,7 @@
     ./gui
     ./git.nix
     ./gnupg.nix
+    ./keyd.nix
     ./neovim
     ./packages.nix
     ./ssh.nix

@@ -1,4 +1,4 @@
-{ ... }: let
+{ pkgs, ... }: let
   nav = {
     h = "left";
     j = "down";
@@ -8,20 +8,26 @@
     "4" = "end";
     u = "pageup";
     d = "pagedown";
+    q = "previoussong";
+    w = "playpause";
+    e = "nextsong";
   };
   alt = {
-    a = "";
-    o = "";
-    u = "";
-    s = "";
-    e = "";
+    a = "ä";
+    o = "ö";
+    u = "ü";
+    s = "ß";
+    e = "€";
   };
   altShift = {
-    a = "";
-    o = "";
-    u = "";
+    a = "Ä";
+    o = "Ö";
+    u = "Ü";
   };
 in {
+  environment.systemPackages = with pkgs; [
+    keyd
+  ];
   # Enable keyd and remap keys
   services.keyd = {
     enable = true;
