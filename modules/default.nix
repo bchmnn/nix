@@ -60,6 +60,7 @@
     ./keyd.nix
     ./mozillavpn.nix
     ./network.nix
+    ./nix-ld.nix
     ./nix.nix
     ./nvidia.nix
     ./opengl.nix
