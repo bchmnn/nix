@@ -4,7 +4,7 @@
   lt = "lsd -lAh --group-directories-first --tree";
   llt = "unbuffer lsd -lAh --group-directories-first --tree | less -r";
 
-  gg = "cd ~/git";
+  gg = "cd ~/code";
   gs = "git status";
   gl = "git log --oneline";
   glg = "git log --oneline --graph --decorate --all";
