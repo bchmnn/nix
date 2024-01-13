@@ -1,0 +1,25 @@
+{ ... }: {
+
+  imports = [ ./hardware.nix ];
+
+  networking.hostName = "T430"; # Define your hostname.
+
+  bchmnn = {
+
+    gui = {
+      enable = true;
+      flavour = [ "sway" "i3" ];
+    };
+    nvidia.enable = false;
+    audio.enable = true;
+    bluetooth.enable = true;
+    printing.enable = true;
+    vpn.enable = true;
+
+    devenv.enable = true;
+    virtualisation.enable = true;
+    games.enable = true;
+
+  };
+
+}

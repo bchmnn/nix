@@ -36,6 +36,22 @@
 
         ];
       };
+      T430 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+
+          ./modules
+          ./hosts/T430
+
+          home-manager.nixosModules.home-manager
+
+          {
+            imports = [ ./users/gandalf ];
+          }
+
+        ];
+      };
     };
   };
 }
