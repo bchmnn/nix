@@ -20,6 +20,7 @@
     telegram-desktop
     signal-desktop
     zathura
+    obsidian
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer
   ];

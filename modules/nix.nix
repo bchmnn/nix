@@ -11,5 +11,11 @@
     })
   ];
 
+  # allow EOL version electron for obsidian
+  # TODO: remove
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
   system.stateVersion = "23.05";
 }
