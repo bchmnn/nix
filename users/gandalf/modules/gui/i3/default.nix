@@ -5,7 +5,8 @@ let
   # common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
   common = (import ../common.nix) { inherit pkgs; inherit lib; };
 
-in {
+in
+{
 
   imports = [
     ./autorandr.nix

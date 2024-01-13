@@ -1,4 +1,5 @@
-{ pkgs, ... }: let
+{ pkgs, ... }:
+let
   nav = {
     h = "left";
     j = "down";
@@ -24,7 +25,8 @@
     o = "Ö";
     u = "Ü";
   };
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     keyd
   ];

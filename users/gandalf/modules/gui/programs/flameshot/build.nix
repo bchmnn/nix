@@ -1,4 +1,4 @@
-{ pkgs , cmake , qttools , qtsvg , kguiaddons , wrapQtAppsHook }:
+{ pkgs, cmake, qttools, qtsvg, kguiaddons, wrapQtAppsHook }:
 
 # https://ryantm.github.io/nixpkgs/using/overrides/
 pkgs.flameshot.overrideAttrs (finalAttrs: previousAttrs: {
