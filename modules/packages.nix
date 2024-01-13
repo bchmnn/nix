@@ -16,16 +16,17 @@
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
+    rustc
+    cargo
     go
+    python312
+    lua
+    nixpkgs-fmt
     openjdk17
     javaPackages.openjfx17
     gradle_7
-    python312
-    nodenv
-    rustc
-    cargo
     nodejs_21
-    lua
+    nodenv
   ] ++ lib.optionals (gui.enable) [
     libnotify
     glib # gsettings
