@@ -30,6 +30,7 @@ in
     nextcloud-client # self hosted cloud client
     plasma5Packages.kdeconnect-kde # sync phone and pc
     system-config-printer # printer manager
+    emote # emoji picker
   ];
 
   programs.swaylock = {
@@ -90,6 +91,7 @@ in
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
         { command = "${system-config-printer}/bin/system-config-printer-applet"; }
+        { command = "${emote}/bin/emote"; }
       ];
       input = {
         "2:7:SynPS/2_Synaptics_TouchPad" = {
@@ -211,6 +213,7 @@ in
         "${cfg.modifier}+Shift+b" = "exec ${pkgs.blueman}/bin/blueman-manager";
         "${cfg.modifier}+Shift+n" = "exec ${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         "${cfg.modifier}+Shift+a" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+        "${cfg.modifier}+period" = "exec ${pkgs.emote}/bin/emote";
       };
       fonts = {
         names = [ common.font ];
