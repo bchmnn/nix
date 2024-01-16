@@ -13,5 +13,4 @@
     videos = "${config.home.homeDirectory}/vids";
   };
 
-
 }
