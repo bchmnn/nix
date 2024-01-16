@@ -13,6 +13,7 @@
     jq # parse json
     unzip
     libsecret
+    xidel # xml parser
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
