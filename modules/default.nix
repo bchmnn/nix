@@ -52,9 +52,9 @@
   imports = [
     ./audio.nix
     ./bluetooth.nix
-    ./boot.nix
     ./dbus.nix
     ./fonts.nix
+    ./greetd.nix
     ./i18n.nix
     ./kdeconnect.nix
     ./keyd.nix
@@ -68,7 +68,6 @@
     ./power.nix
     ./packages.nix
     ./printing.nix
-    ./sddm.nix
     ./security.nix
     ./shell.nix
     ./steam.nix
@@ -76,6 +75,5 @@
     ./unfree.nix
     ./virtualisation.nix
     ./xdg-portal.nix
-    ./xorg.nix
   ];
 }
