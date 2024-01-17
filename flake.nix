@@ -10,6 +10,8 @@
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     #home-manager.url = "github:nix-community/home-manager/release-23.05";
     #home-manager.inputs.nixpkgs.follows = "nixpkgs";
     #home-manager-unstable.url = "github:nix-community/home-manager";
@@ -18,7 +20,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   };
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }@inputs: {
     nixosConfigurations = {
       W530 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -43,6 +45,8 @@
 
           ./modules
           ./hosts/T430
+
+          # nixos-hardware.nixosModules.lenovo-thinkpad-t430
 
           home-manager.nixosModules.home-manager
 
