@@ -10,9 +10,12 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelParams = [ "resume_offset=9364344" ];
   boot.resumeDevice = "/dev/disk/by-uuid/2e6bd7f5-74f0-4047-a0ab-5679b877a9fe";
+  boot.initrd.luks.devices."cryptlvm".device = "/dev/disk/by-uuid/d04a2c58-4116-45d6-aa6e-2002556e6d22";
 
   fileSystems."/" =
     {
@@ -20,8 +23,6 @@
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
-
-  boot.initrd.luks.devices."cryptlvm".device = "/dev/disk/by-uuid/d04a2c58-4116-45d6-aa6e-2002556e6d22";
 
   fileSystems."/home" =
     {
@@ -83,7 +84,6 @@
   }];
 
   networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

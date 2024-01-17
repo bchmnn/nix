@@ -2,7 +2,7 @@
 
   imports = [ ./hardware.nix ];
 
-  networking.hostName = "W530"; # Define your hostname.
+  networking.hostName = "W530";
 
   bchmnn = {
 
