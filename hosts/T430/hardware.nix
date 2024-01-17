@@ -10,7 +10,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [ "resume_offset=533760" ];
+  boot.kernelParams = [ "resume_offset=18883840" ];
   boot.resumeDevice = "/dev/disk/by-label/ROOT";
   boot.initrd.luks.devices."cryptlvm".device = "/dev/disk/by-uuid/b7a904b2-cceb-47fc-832a-701e386a95db";
 
@@ -18,28 +18,28 @@
     {
       device = "/dev/disk/by-label/ROOT";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/home" =
     {
       device = "/dev/disk/by-label/ROOT";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/nix" =
     {
       device = "/dev/disk/by-label/ROOT";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/swap" =
     {
       device = "/dev/disk/by-label/ROOT";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@swap" "noatime" ];
     };
 
   fileSystems."/boot" =
@@ -56,4 +56,5 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+
 
