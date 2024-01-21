@@ -8,6 +8,7 @@
     ./keyd.nix
     ./neovim
     ./packages.nix
+    ./scripts
     ./ssh.nix
     ./tmux.nix
     ./xdg.nix

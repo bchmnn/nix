@@ -14,6 +14,7 @@
     unzip
     libsecret
     xidel # xml parser
+    nvd # nix diff package versions between two store paths
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13

@@ -1,7 +1,11 @@
-{ ... }: {
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
+{ pkgs, ... }: {
+  nix = {
+    # TODO remove once 24.05 is released
+    package = pkgs.nixVersions.unstable;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
   };
 
   nixpkgs.overlays = [

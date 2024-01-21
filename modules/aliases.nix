@@ -17,7 +17,6 @@
   nec = "nvim --cmd \"cd $(readlink -f /etc/nixos)\"";
   ncc = "sudo nixos-rebuild switch --upgrade-all --flake \"$(readlink -f /etc/nixos)\"";
   nup = "sudo nix-channel --update";
-  nuf = "sudo nix flake update --nix-path /etc/nixos";
   ngc = "sudo nix-collect-garbage -d";
 
   dcup = "docker-compose up --detach --remove-orphans";
