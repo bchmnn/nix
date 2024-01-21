@@ -17,6 +17,7 @@
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
+    clang
     rustc
     cargo
     go

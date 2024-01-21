@@ -4,6 +4,8 @@
     enable = true;
     libraries = with pkgs; [
       glibc
+      libcxx
+      libllvm
     ];
   };
 }
