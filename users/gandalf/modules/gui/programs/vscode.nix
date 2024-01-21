@@ -19,11 +19,16 @@ in
       esbenp.prettier-vscode
       bradlc.vscode-tailwindcss
       jnoortheen.nix-ide
+      ms-vscode.cpptools
+      ms-vscode.cmake-tools
     ];
     userSettings = {
+      "window.titleBarStyle" = "custom";
       "window.menuBarVisibility" = "toggle";
 
       "workbench.iconTheme" = "material-icon-theme";
+
+      "extensions.ignoreRecommendations" = true;
 
       "explorer.confirmDragAndDrop" = false;
       "explorer.confirmDelete" = false;
@@ -46,7 +51,7 @@ in
         strings = "on";
       };
       "editor.codeActionsOnSave" = {
-        ".source.organizeImports" = true;
+        ".source.organizeImports" = "explicit";
       };
 
       "terminal.integrated.fontFamily" = common.font;
@@ -149,6 +154,11 @@ in
       {
         key = "alt+right";
         command = "workbench.action.navigateForward";
+      }
+      {
+        key = "ctrl+escape";
+        command = "workbench.action.terminal.toggleTerminal";
+        when = "terminal.active";
       }
       {
         key = "ctrl+f";
