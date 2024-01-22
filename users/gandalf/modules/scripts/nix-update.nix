@@ -9,7 +9,7 @@ pkgs.writeShellScriptBin "nuf" ''
 
   function error {
     echo ""
-    echo -e "''${red}>>>Error: $1''${reset}"
+    echo -e "''${red}>>> ''${bold}Error''${reset}''${red}: $1''${reset}"
     exit 1
   }
 
