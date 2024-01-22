@@ -51,14 +51,14 @@ pkgs.writeShellScriptBin "git-clone-list" ''
       else
         REPOS+=("$line")
       fi
-    done < <(xidel "https://github.com''${NOT_VISITED[0]}" --xpath $XPATH)
+    done < <(${pkgs.xidel}/bin/xidel "https://github.com''${NOT_VISITED[0]}" --xpath $XPATH)
   done
 
   IT=1
 
   for repo in "''${REPOS[@]}"; do
     echo -e "''${green}>>> [$IT/''${#REPOS[@]}] Cloning https://github.com$repo.git ...''${reset}"
-    git clone "https://github.com$repo.git" "''${repo:1}"
+    ${pkgs.git}/bin/git clone "https://github.com$repo.git" "''${repo:1}"
     IT=$((IT + 1))
   done
 ''
