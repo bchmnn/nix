@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     firefox
+    thunderbird
     speechd # https://support.mozilla.org/en-US/kb/speechd-setup
     gnome.nautilus
     gimp
