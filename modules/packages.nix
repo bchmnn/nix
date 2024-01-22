@@ -28,7 +28,7 @@
     openjdk17
     javaPackages.openjfx17
     gradle_7
-    bun
+    bun-baseline
     nodejs_21
     nodenv
   ] ++ lib.optionals (gui.enable) [
