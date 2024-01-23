@@ -58,6 +58,7 @@
     ./i18n.nix
     ./kdeconnect.nix
     ./keyd.nix
+    ./man.nix
     ./mozillavpn.nix
     ./network.nix
     ./nix-ld.nix

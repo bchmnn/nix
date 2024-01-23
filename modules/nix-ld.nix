@@ -6,6 +6,7 @@
       glibc
       libcxx
       libllvm
+      ncurses
     ];
   };
 }
