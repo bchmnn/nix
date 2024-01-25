@@ -20,10 +20,14 @@
     gnome.simple-scan
     telegram-desktop
     signal-desktop
+    zoom-us
     zathura
     obsidian
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer
+  ] ++ lib.optionals nixosConfig.bchmnn.games.enable [
+    prismlauncher
+    openjdk17
   ];
 
 }
