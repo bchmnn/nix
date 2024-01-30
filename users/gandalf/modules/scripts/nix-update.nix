@@ -6,8 +6,10 @@ pkgs.writeShellScriptBin "nuf" ''
   green="\e[32m"
   yellow="\e[33m"
   white_bold="\e[1;37m"
+  tmp=$(mktemp -d)
 
   function error {
+    rm -rf tmp
     echo ""
     echo -e "''${red}>>> ''${bold}Error''${reset}''${red}: $1''${reset}"
     exit 1
@@ -18,7 +20,7 @@ pkgs.writeShellScriptBin "nuf" ''
   echo -e "''${green}>>> Updating flake $FLAKE ...''${reset}"
   ${nixosConfig.nix.package}/bin/nix flake update --flake "$FLAKE" || error "Updating failed"
 
-  cd $(mktemp -d)
+  cd $tmp
   echo ""
   echo -e "''${green}>>> Building configuration ...''${reset}"
   nixos-rebuild build --flake "$FLAKE" || error "Building failed"
@@ -28,6 +30,7 @@ pkgs.writeShellScriptBin "nuf" ''
   ${pkgs.nvd}/bin/nvd diff /run/current-system result || error "Diff failed"
 
   cd - > /dev/null
+  rm -rf $tmp
 
   echo ""
   echo -e "''${yellow}>>> The new configuration has not been activated.''${reset}"
