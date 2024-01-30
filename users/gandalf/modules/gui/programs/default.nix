@@ -10,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
+    tor-browser
     firefox
     thunderbird
     speechd # https://support.mozilla.org/en-US/kb/speechd-setup
@@ -23,6 +24,8 @@
     zoom-us
     zathura
     obsidian
+    carla # audio plugin host
+    aether-lv2 # an algorithmic reverb lv2 based on cloudseed
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer
   ] ++ lib.optionals nixosConfig.bchmnn.games.enable [
