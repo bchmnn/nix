@@ -17,6 +17,7 @@
     gnome.nautilus
     gimp
     vlc
+    calibre
     qbittorrent
     gnome.simple-scan
     telegram-desktop
@@ -24,6 +25,7 @@
     zoom-us
     zathura
     obsidian
+    libreoffice
     carla # audio plugin host
     aether-lv2 # an algorithmic reverb lv2 based on cloudseed
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [

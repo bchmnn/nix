@@ -15,6 +15,7 @@
     libsecret
     xidel # xml parser
     nvd # nix diff package versions between two store paths
+    inotify-tools # set of command-line programs providing a simple interface to inotify
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13

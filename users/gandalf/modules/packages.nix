@@ -9,6 +9,7 @@
     duf # disk usage/free utility - a better 'df' alternative
     phoronix-test-suite # the phoronix test suite open-source, cross-platform automated testing/benchmarking software
     ffmpeg
+    texliveFull
   ];
 
 }
