@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, nixosConfig, ... }:
 let
 
   cfg = config.wayland.windowManager.sway.config;
@@ -81,10 +81,10 @@ in
       menu = "${pkgs.wofi}/bin/wofi";
       startup = with pkgs; [
         # TODO activate with systemd prbly requires a graphical.target?
-        { command = "exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
+        { command = "${nixosConfig.systemd.package}/bin/systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
         { command = "${dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway"; }
-        { command = "systemctl --user stop xdg-desktop-portal xdg-desktop-portal-wlr"; }
-        { command = "systemctl --user start xdg-desktop-portal xdg-desktop-portal-wlr"; }
+        { command = "${nixosConfig.systemd.package}/bin/systemctl --user stop xdg-desktop-portal xdg-desktop-portal-wlr"; }
+        { command = "${nixosConfig.systemd.package}/bin/systemctl --user start xdg-desktop-portal xdg-desktop-portal-wlr"; }
         # { command = "${dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
         # { command = "${dbus}/bin/dbus-update-activation-environment --all"; }
         { command = "${kanshi}/bin/kanshi"; }
