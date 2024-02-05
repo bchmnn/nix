@@ -28,6 +28,7 @@
     libreoffice
     carla # audio plugin host
     aether-lv2 # an algorithmic reverb lv2 based on cloudseed
+    picard # musicbrainz picard audio file tagger
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer
   ] ++ lib.optionals nixosConfig.bchmnn.games.enable [
