@@ -1,4 +1,4 @@
-{ pkgs, lib, config, nixosConfig, ... }:
+{ pkgs, lib, config, ... }:
 let
 
   cfg = config.wayland.windowManager.sway.config;
@@ -15,22 +15,22 @@ in
   ];
 
   home.packages = with pkgs; [
-    brightnessctl # control screen brightness
-    pavucontrol # control audio
-    playerctl # control player
-    networkmanagerapplet # control network
-    udiskie # automount usb
-    dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme # default gnome cursors
-    wl-clipboard # cli tool to manage wayland clipboard
-    sway-contrib.grimshot
-    wdisplays
-    wlr-randr
-    kanshi # display manager
-    nextcloud-client # self hosted cloud client
-    plasma5Packages.kdeconnect-kde # sync phone and pc
-    system-config-printer # printer manager
-    emote # emoji picker
+    brightnessctl # this program allows you read and control device brightness
+    pavucontrol # pulseaudio volume control
+    playerctl # command-line utility and library for controlling media players that implement mpris
+    networkmanagerapplet # networkmanager control applet for gnome
+    udiskie # removable disk automounter for udisks
+    dracula-theme # dracula variant of the ant theme
+    gnome3.adwaita-icon-theme
+    wl-clipboard # command-line copy/paste utilities for wayland
+    sway-contrib.grimshot # a helper for screenshots within sway
+    wdisplays # a graphical application for configuring displays in wayland compositors
+    wlr-randr # an xrandr clone for wlroots compositors
+    kanshi # dynamic display configuration tool
+    nextcloud-client # nextcloud themed desktop client
+    libsForQt5.kdeconnect-kde # kde connect provides several features to integrate your phone and your computer
+    system-config-printer # graphical user interface for cups administration
+    emote # modern emoji picker for linux
   ];
 
   programs.swaylock = {
@@ -81,12 +81,12 @@ in
       menu = "${pkgs.wofi}/bin/wofi";
       startup = with pkgs; [
         # TODO activate with systemd prbly requires a graphical.target?
-        { command = "${nixosConfig.systemd.package}/bin/systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
-        { command = "${dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway"; }
-        { command = "${nixosConfig.systemd.package}/bin/systemctl --user stop xdg-desktop-portal xdg-desktop-portal-wlr"; }
-        { command = "${nixosConfig.systemd.package}/bin/systemctl --user start xdg-desktop-portal xdg-desktop-portal-wlr"; }
+        # { command = "${nixosConfig.systemd.package}/bin/systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
+        # { command = "${dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway"; }
+        # { command = "${nixosConfig.systemd.package}/bin/systemctl --user stop xdg-desktop-portal xdg-desktop-portal-wlr"; }
+        # { command = "${nixosConfig.systemd.package}/bin/systemctl --user start xdg-desktop-portal xdg-desktop-portal-wlr"; }
         # { command = "${dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
-        # { command = "${dbus}/bin/dbus-update-activation-environment --all"; }
+        { command = "${dbus}/bin/dbus-update-activation-environment --all"; }
         { command = "${kanshi}/bin/kanshi"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }

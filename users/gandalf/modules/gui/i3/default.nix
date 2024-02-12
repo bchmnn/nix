@@ -24,7 +24,7 @@ in
     udiskie # automount usb
     blueman # control bluetooth
     nextcloud-client # nextcloud client to connect to any instance
-    plasma5Packages.kdeconnect-kde # sync phone and pc
+    libsForQt5.kdeconnect-kde # sync phone and pc
     system-config-printer # printer manager
   ];
 
