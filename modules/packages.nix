@@ -9,6 +9,7 @@
     neofetch # A fast, highly customizable system info script
     lsd # The next gen ls command
     ripgrep # A utility that combines the usability of The Silver Searcher with the raw speed of grep
+    ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, and more
     expect # A tool for automating interactive applications
     jq # A lightweight and flexible command-line JSON processor
     unzip # An extraction utility for archives compressed in .zip format
@@ -16,6 +17,7 @@
     xidel # Command line tool to download and extract data from HTML/XML pages as well as JSON APIs
     nvd # Nix/NixOS package version diff tool
     inotify-tools # a C library and a set of command-line programs providing a simple interface to inotify
+    ghostscript # postscript interpreter (mainline version)
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13

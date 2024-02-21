@@ -33,6 +33,8 @@
     gimp # the gnu image manipulation program
     calibre # comprehensive e-book software
     libreoffice # comprehensive, professional-quality productivity suite, a variant of openoffice.org
+    xournalpp # a handwriting notetaking software with pdf annotation support
+    libsForQt5.okular # kde document viewer
     carla # audio plugin host
     picard # musicbrainz picard audio file tagger
 
