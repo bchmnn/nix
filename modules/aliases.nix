@@ -1,11 +1,11 @@
 {
-  ls = "lsd --color=auto";
-  la = "lsd -lAh --group-directories-first";
-  lt = "lsd -lAh --group-directories-first --tree";
-  llt = "unbuffer lsd -lAh --group-directories-first --tree | less -r";
+  ls = "lsd --color=auto --hyperlink=auto";
+  la = "lsd -lAh --group-directories-first --hyperlink=auto";
+  lt = "lsd -lAh --group-directories-first --tree --hyperlink=auto";
+  llt = "unbuffer lsd -lAh --group-directories-first --tree --hyperlink=auto | less -r";
 
   gg = "cd ~/code";
-  gs = "git status";
+  # gs = "git status";
   gl = "git log --oneline";
   glg = "git log --oneline --graph --decorate --all";
   gaa = "git add --all";
@@ -26,4 +26,6 @@
   drmv = "docker volume rm $(docker volume ls -q)";
 
   lsip = "curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq";
+
+  xo = "xdg-open";
 }
