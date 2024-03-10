@@ -21,6 +21,7 @@ in
       jnoortheen.nix-ide
       ms-vscode.cpptools
       ms-vscode.cmake-tools
+      james-yu.latex-workshop
     ];
     userSettings = {
       "window.titleBarStyle" = "custom";
