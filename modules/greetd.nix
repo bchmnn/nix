@@ -3,6 +3,7 @@
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
 
   programs.sway.enable = builtins.elem "sway" gui.flavour;
+  programs.hyprland.enable = builtins.elem "hyprland" gui.flavour;
   services.xserver.windowManager.i3.enable = builtins.elem "i3" gui.flavour;
 
   services.xserver = {
@@ -16,6 +17,7 @@
     etc = {
       "greetd/environments".text = ''
         sway
+        Hyprland
       '';
       "greetd/kanshi-config".text = ''
         profile nomad {

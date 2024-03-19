@@ -8,7 +8,7 @@
 
     gui = {
       enable = true;
-      flavour = [ "sway" ];
+      flavour = [ "sway" "hyprland" ];
     };
     nvidia.enable = false;
     audio.enable = true;

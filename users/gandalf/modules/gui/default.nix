@@ -6,6 +6,8 @@
       ./programs
     ] ++ optionals (gui.enable && elem "sway" gui.flavour) [
       ./sway
+    ] ++ optionals (gui.enable && elem "hyprland" gui.flavour) [
+      ./hyprland
     ] ++ optionals (gui.enable && elem "i3" gui.flavour) [
       ./i3
     ];

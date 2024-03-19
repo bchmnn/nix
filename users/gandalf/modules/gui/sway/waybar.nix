@@ -5,12 +5,14 @@
     settings.mainBar = {
       layer = "top";
       margin = "5 5 5 5";
-      modules-left = [ "sway/workspaces" "sway/window" "sway/mode" ];
+      modules-left = [ "sway/workspaces" "sway/window" "sway/mode"
+        # "hyprland/workspaces" "hyprland/window"
+      ];
       modules-center = [ "clock" ];
       modules-right = [ "tray" "network" "pulseaudio" "custom/mem" "temperature" "backlight" "battery" ];
       "sway/workspaces" = {
         disable-scroll = true;
-        persistent_workspaces = {
+        persistent-workspaces = {
           "1" = [ ];
           "2" = [ ];
           "3" = [ ];
@@ -23,6 +25,12 @@
       };
       "sway/mode" = {
         format = "<span style=\"italic\">{}</span>";
+      };
+      "hyprland/workspaces" = {
+        disable-scroll = true;
+      };
+      "hyprland/window" = {
+        format = "{title}";
       };
       clock = {
         timezones = [ "Europe/Berlin" ];
@@ -198,6 +206,10 @@
       }
 
       #workspaces button.focused {
+          color: white;
+      }
+
+      #workspaces button.visible {
           color: white;
       }
 

@@ -18,6 +18,7 @@
     nvd # Nix/NixOS package version diff tool
     inotify-tools # a C library and a set of command-line programs providing a simple interface to inotify
     ghostscript # postscript interpreter (mainline version)
+    ventoy-full # bootable usb solution
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
