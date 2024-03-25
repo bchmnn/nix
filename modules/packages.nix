@@ -19,6 +19,7 @@
     inotify-tools # a C library and a set of command-line programs providing a simple interface to inotify
     ghostscript # postscript interpreter (mainline version)
     ventoy-full # bootable usb solution
+    fio # flexible io tester - an io benchmark tool
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
@@ -44,5 +45,7 @@
   ] ++ lib.optionals (gui.enable && lib.elem "sway" gui.flavour) [
     qt5.qtwayland
     qt6.qtwayland
+  ] ++ lib.optionals (nvidia.enable) [
+    nvtop
   ];
 }

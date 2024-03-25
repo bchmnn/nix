@@ -5,8 +5,12 @@
     settings.mainBar = {
       layer = "top";
       margin = "5 5 5 5";
-      modules-left = [ "sway/workspaces" "sway/window" "sway/mode"
-        # "hyprland/workspaces" "hyprland/window"
+      modules-left = [
+        "sway/workspaces"
+        "sway/window"
+        "sway/mode"
+        "hyprland/workspaces"
+        "hyprland/window"
       ];
       modules-center = [ "clock" ];
       modules-right = [ "tray" "network" "pulseaudio" "custom/mem" "temperature" "backlight" "battery" ];

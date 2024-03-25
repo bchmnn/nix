@@ -2,16 +2,16 @@
 
   imports = [ ./hardware.nix ];
 
-  networking.hostName = "W530";
+  networking.hostName = "IROH";
 
   bchmnn = {
 
     gui = {
       enable = true;
       greeter.enable = true;
-      flavour = [ "sway" "i3" ];
+      flavour = [ "Hyprland" "sway" "i3" ];
     };
-    nvidia.enable = false;
+    nvidia.enable = true;
     audio.enable = true;
     bluetooth.enable = true;
     printing.enable = true;

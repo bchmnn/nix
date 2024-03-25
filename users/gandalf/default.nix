@@ -1,4 +1,4 @@
-{ unstable, ... }:
+{ unstable, hyprland, hy3, ... }:
 let
   aliases = import ../../modules/aliases.nix;
 in
@@ -12,10 +12,15 @@ in
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
     inherit unstable;
+    inherit hyprland;
+    inherit hy3;
   };
 
   home-manager.users.gandalf = { pkgs, ... }: {
-    imports = [ ./modules ];
+    imports = [
+      hyprland.homeManagerModules.default
+      ./modules
+    ];
 
     config = {
       home = {

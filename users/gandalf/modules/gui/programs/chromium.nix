@@ -9,7 +9,7 @@ let
     };
     spotify = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/232px-Spotify_icon.svg.png";
-      sha256 = "0568b108bf4533e7382e0f3526e211308868d2d2aa35ab8f0cc7beb464e70d5f";
+      sha256 = "4251a663072b97fe5434638d9c58bbe20c2aea6da44e8d614f664b324ffe9e73";
       meta.licenses = lib.licenses.publicDomain;
     };
     teams = pkgs.fetchurl {
@@ -84,3 +84,4 @@ in
   };
 
 }
+

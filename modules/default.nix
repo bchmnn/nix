@@ -5,10 +5,13 @@
 
     gui = {
       enable = mkEnableOption "gui";
+      greeter = {
+        enable = mkEnableOption "greeter";
+      };
       flavour = mkOption {
         type = types.listOf types.str;
         default = [ "sway" ];
-        example = [ "sway" "i3" "hyprland" ];
+        example = [ "sway" "i3" "Hyprland" ];
         description = ''
           The flavour (WM) for your system to use
         '';
@@ -51,6 +54,7 @@
 
   imports = [
     ./audio.nix
+    ./ausweisapp.nix
     ./bluetooth.nix
     ./dbus.nix
     ./fonts.nix

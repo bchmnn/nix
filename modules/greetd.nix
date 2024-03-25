@@ -3,7 +3,7 @@
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
 
   programs.sway.enable = builtins.elem "sway" gui.flavour;
-  programs.hyprland.enable = builtins.elem "hyprland" gui.flavour;
+  programs.hyprland.enable = builtins.elem "Hyprland" gui.flavour;
   services.xserver.windowManager.i3.enable = builtins.elem "i3" gui.flavour;
 
   services.xserver = {
@@ -13,17 +13,25 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "sway-run" ''
+      export WLR_NO_HARDWARE_CURSORS=1
+      exec ${sway}/bin/sway "$@"
+    '')
+  ];
+
   environment = {
     etc = {
-      "greetd/environments".text = ''
-        sway
-        Hyprland
-      '';
+      "greetd/environments".text = (lib.strings.concatLines gui.flavour);
       "greetd/kanshi-config".text = ''
         profile nomad {
           output "LVDS-1" enable
         }
-
+        profile iroh {
+          output "DP-3" enable mode 2560x1440 position 0,0
+          output "DP-2" enable mode 2560x1440 position 2560,0
+          output "DP-1" enable mode 2560x1440 position 5120,0
+        }
         profile station {
           output "LVDS-1" disable
           output "Dell Inc. DELL U2515H 9X2VY5490XUL" enable mode 1920x1080 position 0,0
@@ -47,10 +55,10 @@
   };
 
   services.greetd = {
-    enable = true;
+    enable = gui.greeter.enable;
     settings = {
       default_session = {
-        command = "${pkgs.sway}/bin/sway --config /etc/greetd/sway-config";
+        command = "sway-run --config /etc/greetd/sway-config" + lib.optionals nvidia.enable " --unsupported-gpu";
       };
     };
   };

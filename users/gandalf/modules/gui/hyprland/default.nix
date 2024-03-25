@@ -1,18 +1,78 @@
-{ pkgs, lib, nixosConfig, ... }:
+{ pkgs, lib, nixosConfig, hy3, ... }:
 let
   common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
+
+  dropterm = rec {
+    class = "alacritty-dropterm";
+    name = "toggle-${class}";
+    package = pkgs.writeShellScriptBin name ''
+      TOGGLE=/tmp/${class}
+      WINDOW=$(${pkgs.hyprland}/bin/hyprctl -j clients | ${pkgs.jq}/bin/jq 'any(.[]; .class == "${class}")')
+      if [ -f "$TOGGLE" ]; then
+        if [ $WINDOW == "true" ]; then
+          ${pkgs.hyprland}/bin/hyprctl --batch \
+            "dispatch movewindowpixel 0 -700,${class}; dispatch pin ${class}; dispatch cyclenext"
+          rm $TOGGLE
+        else 
+          ${pkgs.alacritty}/bin/alacritty --class=${class} & disown
+        fi
+      else
+        if [ $WINDOW == "true" ]; then
+          ${pkgs.hyprland}/bin/hyprctl --batch \
+            "dispatch movewindowpixel 0 700,${class}; dispatch pin ${class}; dispatch focuswindow ${class}"
+        else
+          ${pkgs.alacritty}/bin/alacritty --class=${class} & disown
+        fi
+        touch $TOGGLE
+      fi
+    '';
+    bin = "${package}/bin/${name}";
+  };
+
 in
 {
   imports = [
     ../sway/waybar.nix
     ../sway/wofi.nix
   ];
+
+  home.packages = with pkgs; [
+    brightnessctl # this program allows you read and control device brightness
+    pavucontrol # pulseaudio volume control
+    playerctl # command-line utility and library for controlling media players that implement mpris
+    networkmanagerapplet # networkmanager control applet for gnome
+    udiskie # removable disk automounter for udisks
+    dracula-theme # dracula variant of the ant theme
+    gnome3.adwaita-icon-theme
+    wl-clipboard # command-line copy/paste utilities for wayland
+    sway-contrib.grimshot # a helper for screenshots within sway
+    wdisplays # a graphical application for configuring displays in wayland compositors
+    wlr-randr # an xrandr clone for wlroots compositors
+    kanshi # dynamic display configuration tool
+    nextcloud-client # nextcloud themed desktop client
+    libsForQt5.kdeconnect-kde # kde connect provides several features to integrate your phone and your computer
+    system-config-printer # graphical user interface for cups administration
+    emote # modern emoji picker for linux
+  ];
+
+  programs.swaylock = {
+    enable = true;
+    # package = pkgs.swaylock-effects;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
-    enableNvidiaPatches = nixosConfig.bchmnn.nvidia.enable;
-    # plugins = [ hy3.packages.x86_64-linux.hy3 ];
+    plugins = [ hy3.packages.x86_64-linux.hy3 ];
     settings = {
+      env = with lib; with nixosConfig.bchmnn; optionals nvidia.enable [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "env = XDG_SESSION_TYPE,wayland"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "WLR_NO_HARDWARE_CURSORS,1"
+      ];
       "exec-once" = with pkgs; [
+        "${swaybg}/bin/swaybg -m fill -i ${common.wallpaper}"
         "${waybar}/bin/waybar"
         "${dbus}/bin/dbus-update-activation-environment --all"
         "${kanshi}/bin/kanshi"
@@ -33,6 +93,7 @@ in
         };
       };
       general = {
+        layout = "hy3";
         border_size = "2";
         gaps_out = "5";
         gaps_in = "5";
@@ -46,15 +107,38 @@ in
         shadow_scale = "0.5"; # float [0.0-1.0]
         "col.shadow" = "rgba(00000099)";
       };
+      plugin = {
+        hy3 = {
+          tabs = {
+            height = 20;
+            text_font = common.font;
+            text_height = 12;
+            "col.active" = "0xffffdeeb"; # common.colorschemes.default.active;
+            "col.urgent" = "0xffc92a2a"; # common.colorschemes.default.alert;
+            "col.inactive" = "0xff212529"; # common.colorschemes.default.inactiveDark;
+            "col.text.active" = "0xff000000"; # common.colorschemes.default.black;
+            "col.text.urgent" = "0xffffffff"; # common.colorschemes.default.white;
+            "col.text.inactive" = "0xffffffff"; # common.colorschemes.default.white;
+          };
+        };
+      };
       "$terminal" = "${pkgs.alacritty}/bin/alacritty";
       "$fileManager" = "${pkgs.gnome.nautilus}/bin/nautilus";
       "$menu" = "${pkgs.wofi}/bin/wofi";
       "$mod" = "SUPER";
+      windowrule = [
+        "float, ${dropterm.class}"
+        "size 96% 33%, ${dropterm.class}"
+        "move 2% 50, ${dropterm.class}"
+      ];
       bind = [
+        "$mod, grave, exec, ${dropterm.bin}"
+        "$mod, escape, exec, ${dropterm.bin}"
         "$mod, Q, killactive,"
         "$mod, return, exec, $terminal"
         "$mod SHIFT, Q, exit,"
         "$mod SHIFT, E, exec, $fileManager"
+        "$mod, F, fullscreen,"
         "$mod, D, togglefloating,"
         "$mod, space, exec, $menu"
         "$mod CONTROL SHIFT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ffffff --key-hl-color ${common.colorschemes.default._activeDark} --line-color 00000000 --inside-color 00000088 --inside-ver-color ${common.colorschemes.default._activeDark} --separator-color 00000000 --text-color ${common.colorschemes.default._activeDark} --fade-in 0.1"
@@ -63,23 +147,21 @@ in
         "$mod SHIFT, N, exec, ${pkgs.networkmanagerapplet}/bin/nm-connection-editor"
         "$mod SHIFT, A, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
         "$mod, period, exec, ${pkgs.emote}/bin/emote"
-        # bind = $mod, P, pseudo, # dwindle
-        # bind = $mod, J, togglesplit, # dwindle
 
         # Move focus
-        "$mod, H, movefocus, l"
-        "$mod, L, movefocus, r"
-        "$mod, K, movefocus, u"
-        "$mod, J, movefocus, d"
+        "$mod, H, hy3:movefocus, l"
+        "$mod, L, hy3:movefocus, r"
+        "$mod, K, hy3:movefocus, u"
+        "$mod, J, hy3:movefocus, d"
 
         "$mod, P, focusmonitor, l"
         "$mod, N, focusmonitor, r"
 
         # Move windows
-        "$mod SHIFT, H, movewindow, l"
-        "$mod SHIFT, J, movewindow, d"
-        "$mod SHIFT, K, movewindow, u"
-        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, H, hy3:movewindow, l"
+        "$mod SHIFT, J, hy3:movewindow, d"
+        "$mod SHIFT, K, hy3:movewindow, u"
+        "$mod SHIFT, L, hy3:movewindow, r"
 
         # Switch workspaces
         "$mod, 1, workspace, 1"
@@ -111,7 +193,10 @@ in
         "$mod CONTROL SHIFT, J, movecurrentworkspacetomonitor, l"
         "$mod CONTROL SHIFT, K, movecurrentworkspacetomonitor, r"
 
-        "$mod, W, togglegroup,"
+        "$mod, W, hy3:changegroup, toggletab"
+
+        "$mod, B, hy3:makegroup, h"
+        "$mod, V, hy3:makegroup, v"
 
         ", print, exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area"
       ];
