@@ -27,6 +27,7 @@ in
       "window.titleBarStyle" = "custom";
       "window.menuBarVisibility" = "toggle";
 
+      "workbench.colorTheme" = "Default Light Modern";
       "workbench.iconTheme" = "material-icon-theme";
 
       "extensions.ignoreRecommendations" = true;

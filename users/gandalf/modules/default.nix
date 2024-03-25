@@ -6,6 +6,7 @@
     ./git.nix
     ./gnupg.nix
     ./keyd.nix
+    ./lsd
     ./neovim
     ./packages.nix
     ./scripts

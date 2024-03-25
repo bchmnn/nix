@@ -65,11 +65,32 @@ in
     plugins = [ hy3.packages.x86_64-linux.hy3 ];
     settings = {
       env = with lib; with nixosConfig.bchmnn; optionals nvidia.enable [
+        "CLUTTER_BACKEND,wayland"
+        "GDK_BACKEND,wayland"
+        "GDK_DPI_SCALE,1"
+        "NIXOS_OZONE_WL,1"
+        "MOZ_ENABLE_WAYLAND,1"
+        "MOZ_USE_XINPUT2,1"
+        "XDG_SESSION_TYPE,wayland"
+
+        # nvidia
         "LIBVA_DRIVER_NAME,nvidia"
-        "env = XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_TYPE,wayland"
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_NO_HARDWARE_CURSORS,1"
+
+        # sdl
+        "SDL_VIDEODRIVER,wayland"
+
+        # qt
+        "QT_QPA_PLATFORM,wayland-egl"
+        # "QT_QPA_PLATFORM,wayland"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+
+        # java
+        "_JAVA_AWT_WM_NONREPARENTING,1"
+        "_JAVA_OPTIONS,\"-Dawt.useSystemAAFontSettings=on\""
       ];
       "exec-once" = with pkgs; [
         "${swaybg}/bin/swaybg -m fill -i ${common.wallpaper}"

@@ -3,11 +3,15 @@ let
   common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 in
 {
-  # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {
     enable = true;
-    # custom settings
     settings = {
+      import = [
+        # Available themes:
+        #   https://github.com/alacritty/alacritty-theme
+
+        "${pkgs.alacritty-theme}/atom_one_light.toml"
+      ];
       env.TERM = "xterm-256color";
       font = {
         size = 12;

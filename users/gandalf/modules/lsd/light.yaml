@@ -1,0 +1,41 @@
+# Color codes:
+#   https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
+user: 70
+group: 58
+permission:
+  read: dark_green
+  write: dark_yellow
+  exec: dark_red
+  exec-sticky: 5
+  no-access: 245
+  octal: 6
+  acl: dark_cyan
+  context: cyan
+date:
+  hour-old: 40
+  day-old: 42
+  older: 36
+size:
+  none: 245
+  small: 70
+  medium: 214
+  large: 166
+inode:
+  valid: 13
+  invalid: 245
+links:
+  valid: 13
+  invalid: 245
+tree-edge: 245
+git-status:
+  default: 245
+  unmodified: 245
+  ignored: 245
+  new-in-index: dark_green
+  new-in-workdir: dark_green
+  typechange: dark_yellow
+  deleted: dark_red
+  renamed: dark_green
+  modified: dark_yellow
+  conflicted: dark_red
