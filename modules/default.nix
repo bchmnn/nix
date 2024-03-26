@@ -78,6 +78,7 @@
     ./services.nix
     ./shell.nix
     ./steam.nix
+    ./syncthing.nix
     ./udisks2.nix
     ./unfree.nix
     ./virtualisation.nix

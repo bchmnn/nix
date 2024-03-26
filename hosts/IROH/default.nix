@@ -4,6 +4,16 @@
 
   networking.hostName = "IROH";
 
+  services.syncthing = {
+    settings = {
+      devices = {
+        IROH = {
+          id = "PJA2MBA-66PQQEO-5KICONS-FGHDH46-YRV2X5Y-47UUP77-QXI2WNS-R33FPAK";
+        };
+      };
+    };
+  };
+
   bchmnn = {
 
     gui = {
