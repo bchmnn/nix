@@ -58,7 +58,7 @@
     enable = gui.greeter.enable;
     settings = {
       default_session = {
-        command = "sway-run --config /etc/greetd/sway-config" + lib.optionals nvidia.enable " --unsupported-gpu";
+        command = "sway-run --config /etc/greetd/sway-config" + lib.optionalString nvidia.enable " --unsupported-gpu";
       };
     };
   };

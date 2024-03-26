@@ -1,5 +1,6 @@
 { ... }: {
 
+
   imports = [ ./hardware.nix ];
 
   networking.hostName = "T430";
