@@ -10,7 +10,7 @@
     gui = {
       enable = true;
       greeter.enable = true;
-      flavour = [ "sway" "Hyprland" ];
+      flavour = [ "Hyprland" "sway" ];
     };
     nvidia.enable = false;
     audio.enable = true;
