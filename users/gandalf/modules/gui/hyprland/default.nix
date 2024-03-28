@@ -120,13 +120,14 @@ in
         gaps_in = "5";
       };
       decoration = {
-        rounding = "5";
+        rounding = "10";
         drop_shadow = "true";
-        shadow_range = "10";
-        shadow_render_power = "3"; # int [1-4]
+        shadow_range = "25";
+        shadow_render_power = "1"; # int [1-4]
         shadow_offset = "0 5"; # vec2 [0, 0]
-        shadow_scale = "0.5"; # float [0.0-1.0]
-        "col.shadow" = "rgba(00000099)";
+        # shadow_scale = "0.8"; # float [0.0-1.0]
+        #     col.shadow = rgba(1a1a1aee)
+        "col.shadow" = "rgba(1a1a1a2f)";
       };
       plugin = {
         hy3 = {
