@@ -44,6 +44,6 @@
     qt5.qtwayland
     qt6.qtwayland
   ] ++ lib.optionals (nvidia.enable) [
-    nvtop
+    nvtopPackages.full
   ];
 }
