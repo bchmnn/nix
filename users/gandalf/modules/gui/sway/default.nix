@@ -10,8 +10,8 @@ in
   imports = [
     ./kanshi.nix
     ./swaync
-    ./waybar.nix
     ./wofi.nix
+    ../waybar.nix
   ];
 
   home.packages = with pkgs; [
@@ -275,7 +275,7 @@ in
       };
       bars = [
         {
-          command = "${pkgs.waybar}/bin/waybar";
+          command = "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/swaybar.json -s ${config.xdg.configHome}/waybar/swaybar.css";
         }
       ];
     };

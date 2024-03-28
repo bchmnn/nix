@@ -1,4 +1,4 @@
-{ unstable, hyprland, hy3, ... }:
+{ unstable, hyprland, hy3, waybar, ... }:
 let
   aliases = import ../../modules/aliases.nix;
 in
@@ -14,6 +14,7 @@ in
     inherit unstable;
     inherit hyprland;
     inherit hy3;
+    inherit waybar;
   };
 
   home-manager.users.gandalf = { pkgs, ... }: {

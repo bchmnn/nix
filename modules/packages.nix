@@ -18,9 +18,6 @@
     xidel # command line tool to download and extract data from html/xml pages as well as json apis
     nvd # nix/nixos package version diff tool
     inotify-tools # a c library and a set of command-line programs providing a simple interface to inotify
-    ghostscript # postscript interpreter (mainline version)
-    ventoy-full # bootable usb solution
-    fio # flexible io tester - an io benchmark tool
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13

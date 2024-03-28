@@ -10,7 +10,7 @@ in
         # Available themes:
         #   https://github.com/alacritty/alacritty-theme
 
-        "${pkgs.alacritty-theme}/atom_one_light.toml"
+        "${pkgs.alacritty-theme}/alabaster.toml"
       ];
       env.TERM = "xterm-256color";
       font = {

@@ -14,8 +14,10 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    waybar.url = "github:Alexays/Waybar";
+
   };
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, hy3, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, hy3, waybar, ... }@inputs: {
     nixosConfigurations = {
       W530 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -1,4 +1,4 @@
-{ pkgs, lib, nixosConfig, hy3, ... }:
+{ pkgs, lib, nixosConfig, hy3, config, ... }:
 let
   common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 
@@ -32,8 +32,8 @@ let
 in
 {
   imports = [
-    ../sway/waybar.nix
     ../sway/wofi.nix
+    ../waybar.nix
   ];
 
   home.packages = with pkgs; [
@@ -93,8 +93,8 @@ in
         "_JAVA_OPTIONS,\"-Dawt.useSystemAAFontSettings=on\""
       ];
       "exec-once" = with pkgs; [
+        "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/hyprbar.json -s ${config.xdg.configHome}/waybar/hyprbar.css"
         "${swaybg}/bin/swaybg -m fill -i ${common.wallpaper}"
-        "${waybar}/bin/waybar"
         "${dbus}/bin/dbus-update-activation-environment --all"
         "${kanshi}/bin/kanshi"
         "${networkmanagerapplet}/bin/nm-applet"
