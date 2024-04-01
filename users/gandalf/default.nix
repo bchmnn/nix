@@ -1,4 +1,4 @@
-{ unstable, hyprland, hy3, waybar, ... }:
+{ ... }@inputs:
 let
   aliases = import ../../modules/aliases.nix;
 in
@@ -11,15 +11,13 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = {
-    inherit unstable;
-    inherit hyprland;
-    inherit hy3;
-    inherit waybar;
+    inherit inputs;
   };
 
   home-manager.users.gandalf = { pkgs, ... }: {
     imports = [
-      hyprland.homeManagerModules.default
+      inputs.hyprland.homeManagerModules.default
+      inputs.ags.homeManagerModules.default
       ./modules
     ];
 

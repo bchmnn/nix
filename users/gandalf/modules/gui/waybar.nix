@@ -1,4 +1,4 @@
-{ pkgs, waybar, ... }:
+{ pkgs, inputs, ... }:
 let
   check-battery = pkgs.writeShellScript "check-battery" ''
     bat=/sys/class/power_supply/BAT0
@@ -687,6 +687,6 @@ in
   programs.waybar = {
     enable = true;
     # TODO replace with (un-)stable channel version once available
-    package = waybar.packages.x86_64-linux.default;
+    package = inputs.waybar.packages.x86_64-linux.default;
   };
 }

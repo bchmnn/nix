@@ -2,6 +2,7 @@
 
   imports = with lib; with nixosConfig.bchmnn;
     optionals gui.enable [
+      ./ags
       ./gtk.nix
       ./programs
     ] ++ optionals (gui.enable && elem "sway" gui.flavour) [

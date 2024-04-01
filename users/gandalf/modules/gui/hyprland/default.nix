@@ -1,4 +1,4 @@
-{ pkgs, lib, nixosConfig, hy3, config, ... }:
+{ pkgs, lib, nixosConfig, config, inputs, ... }:
 let
   common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
 
@@ -62,7 +62,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    plugins = [ hy3.packages.x86_64-linux.hy3 ];
+    plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
     settings = {
       env = with lib; with nixosConfig.bchmnn; optionals nvidia.enable [
         "CLUTTER_BACKEND,wayland"

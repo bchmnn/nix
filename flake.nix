@@ -5,8 +5,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland.url = "github:hyprwm/Hyprland";
     hy3 = {
@@ -16,20 +18,22 @@
 
     waybar.url = "github:Alexays/Waybar";
 
+    ags.url = "github:Aylur/ags";
+
   };
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, hyprland, hy3, waybar, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs: {
     nixosConfigurations = {
       W530 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
 
-          hyprland.nixosModules.default
+          inputs.hyprland.nixosModules.default
 
           ./modules
           ./hosts/W530
 
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
 
           {
             imports = [ ./users/gandalf ];
@@ -42,14 +46,14 @@
         specialArgs = inputs;
         modules = [
 
-          hyprland.nixosModules.default
+          inputs.hyprland.nixosModules.default
 
           ./modules
           ./hosts/T430
 
           # nixos-hardware.nixosModules.lenovo-thinkpad-t430
 
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
 
           {
             imports = [ ./users/gandalf ];
@@ -62,12 +66,12 @@
         specialArgs = inputs;
         modules = [
 
-          hyprland.nixosModules.default
+          inputs.hyprland.nixosModules.default
 
           ./modules
           ./hosts/IROH
 
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
 
           {
             imports = [ ./users/gandalf ];
