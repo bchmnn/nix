@@ -1,5 +1,5 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    discord
+    vesktop # alternate client for discord with vencord built-in
   ];
 }

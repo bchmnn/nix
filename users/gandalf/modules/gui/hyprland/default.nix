@@ -64,6 +64,9 @@ in
     enable = true;
     plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
     settings = {
+      # debug = {
+      #   disable_logs = false;
+      # };
       env = with lib; with nixosConfig.bchmnn; optionals nvidia.enable [
         "CLUTTER_BACKEND,wayland"
         "GDK_BACKEND,wayland"
