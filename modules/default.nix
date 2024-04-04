@@ -61,6 +61,7 @@
     ./greetd.nix
     ./gstreamer.nix
     ./i18n.nix
+    ./jackett.nix
     ./kdeconnect.nix
     ./keyd.nix
     ./man.nix
@@ -75,7 +76,6 @@
     ./packages.nix
     ./printing.nix
     ./security.nix
-    ./services.nix
     ./shell.nix
     ./steam.nix
     ./syncthing.nix
