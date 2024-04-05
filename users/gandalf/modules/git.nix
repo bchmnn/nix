@@ -8,5 +8,10 @@
     };
     userEmail = "jacob.bachmann@posteo.de";
     userName = "Jacob Bachmann";
+    extraConfig = {
+      init = { defaultBranch = "main"; };
+      core.editor = "nvim";
+      pull.rebase = false;
+    };
   };
 }
