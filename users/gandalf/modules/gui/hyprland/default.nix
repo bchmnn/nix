@@ -64,10 +64,10 @@ in
     enable = true;
     plugins = [ inputs.hy3.packages.x86_64-linux.hy3 ];
     settings = {
-      # debug = {
-      #   disable_logs = false;
-      # };
-      env = with lib; with nixosConfig.bchmnn; optionals nvidia.enable [
+      debug = {
+        disable_logs = false;
+      };
+      env = with lib; with nixosConfig.bchmnn;  [
         "CLUTTER_BACKEND,wayland"
         "GDK_BACKEND,wayland"
         "GDK_DPI_SCALE,1"
@@ -75,13 +75,6 @@ in
         "MOZ_ENABLE_WAYLAND,1"
         "MOZ_USE_XINPUT2,1"
         "XDG_SESSION_TYPE,wayland"
-
-        # nvidia
-        "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "WLR_NO_HARDWARE_CURSORS,1"
 
         # sdl
         "SDL_VIDEODRIVER,wayland"
@@ -94,6 +87,14 @@ in
         # java
         "_JAVA_AWT_WM_NONREPARENTING,1"
         "_JAVA_OPTIONS,\"-Dawt.useSystemAAFontSettings=on\""
+      ] ++ optionals nvidia.enable [
+        # nvidia
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        # following causes Hyprland to crash on startup with 535 drivers
+        # "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "WLR_NO_HARDWARE_CURSORS,1"
       ];
       "exec-once" = with pkgs; [
         "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/hyprbar.json -s ${config.xdg.configHome}/waybar/hyprbar.css"
