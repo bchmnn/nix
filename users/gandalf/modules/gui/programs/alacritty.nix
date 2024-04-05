@@ -21,6 +21,12 @@ in
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
+      window = {
+        padding = {
+          x = 5;
+          y = 5;
+        };
+      };
     };
   };
 }

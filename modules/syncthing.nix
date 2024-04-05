@@ -67,6 +67,7 @@
     };
 
     user = "gandalf";
+    group = "users";
     dataDir = "/home/gandalf";
 
   };
