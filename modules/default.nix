@@ -71,6 +71,7 @@
     ./nvidia.nix
     ./opengl.nix
     ./openssh.nix
+    ./openvpn.nix
     ./power.nix
     ./packages.nix
     ./printing.nix

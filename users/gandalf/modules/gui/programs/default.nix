@@ -17,6 +17,7 @@
     speechd # common interface to speech synthesis - https://support.mozilla.org/en-us/kb/speechd-setup
     tor-browser # privacy-focused browser routing traffic through the tor network
     qbittorrent # featureful free software bittorrent client
+    element-desktop # a feature-rich client for matrix.org
 
     telegram-desktop # telegram desktop messaging app
     signal-desktop # private, simple, and secure messenger
