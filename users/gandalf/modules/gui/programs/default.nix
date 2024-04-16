@@ -25,6 +25,7 @@
 
     gnome.nautilus # the file manager for gnome
     gnome.simple-scan # simple scanning utility
+    pppdf
     feh # a light-weight image viewer
     vlc # cross-platform media player and streaming server
     zathura # a highly customizable and functional pdf viewer
@@ -41,9 +42,14 @@
 
   ] ++ lib.optionals nixosConfig.bchmnn.printing.enable [
     system-config-printer # graphical user interface for cups administration
+
   ] ++ lib.optionals nixosConfig.bchmnn.games.enable [
     openjdk17 # the open-source java development kit
     prismlauncher # a free, open source launcher for minecraft
+
+  ] ++ lib.optionals nixosConfig.bchmnn.ratbag.enable [
+    piper # gtk frontend for ratbagd mouse config daemon
+
   ];
 
 }

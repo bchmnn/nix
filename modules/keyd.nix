@@ -34,7 +34,12 @@ in
   services.keyd = {
     enable = true;
     keyboards.default = {
-      ids = [ "*" "-04fe:0020" ];
+      ids = [
+        "*"
+        "-04fe:0020" # HHKB
+        "-046d:102a" # Logitech G700s
+        "-046d:c07c" # Logitech G700s Rechargeable Gaming Mouse
+      ];
       settings = {
         main = {
           leftalt = "layer(meta)";
