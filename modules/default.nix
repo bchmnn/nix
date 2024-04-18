@@ -66,6 +66,7 @@
     ./man.nix
     ./mozillavpn.nix
     ./network.nix
+    ./nh.nix
     ./nix-ld.nix
     ./nix.nix
     ./nvidia.nix
