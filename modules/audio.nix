@@ -1,4 +1,4 @@
-{ config, lib, ... }: lib.mkIf config.bchmnn.audio.enable {
+{ pkgs, config, lib, ... }: lib.mkIf config.bchmnn.audio.enable {
   # Enable pipewire - audio
   services.pipewire = {
     enable = true;
@@ -7,5 +7,12 @@
     alsa.support32Bit = true;
     jack.enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    alsa-utils
+    pulseaudio
+  ];
+
 }

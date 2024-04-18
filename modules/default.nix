@@ -50,6 +50,14 @@
       enable = mkEnableOption "games";
     };
 
+    ai = {
+      enable = mkEnableOption "ai";
+    };
+
+    ratbag = {
+      enable = mkEnableOption "ratbag";
+    };
+
   };
 
   imports = [
@@ -70,19 +78,21 @@
     ./nix-ld.nix
     ./nix.nix
     ./nvidia.nix
+    ./ollama.nix
     ./opengl.nix
     ./openssh.nix
     ./openvpn.nix
     ./power.nix
     ./packages.nix
     ./printing.nix
+    ./ratbag.nix
     ./rr.nix
     ./security.nix
     ./shell.nix
     ./steam.nix
     ./syncthing.nix
+    ./tts.nix
     ./udisks2.nix
-    ./unfree.nix
     ./virtualisation.nix
     ./xdg-portal.nix
   ];

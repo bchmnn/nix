@@ -6,7 +6,6 @@
 
   virtualisation = {
     oci-containers = {
-      backend = "podman";
       containers = {
         flare-solvarr = {
           image = "ghcr.io/flaresolverr/flaresolverr:latest";

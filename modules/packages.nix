@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; with config.bchmnn; [
     pciutils # a collection of programs for inspecting and manipulating configuration of pci devices
     usbutils # tools for working with usb devices, such as lsusb
+    lshw # provide detailed information on the hardware configuration of the machine
     git # distributed version control system
     gnumake # a tool to control the generation of non-source files from sources
     mercurial # a fast, lightweight scm system for very large distributed projects

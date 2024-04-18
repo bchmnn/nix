@@ -1,5 +1,6 @@
 {
   imports = [
+    ./audio.nix
     ./dconf.nix
     ./fzf.nix
     ./gui

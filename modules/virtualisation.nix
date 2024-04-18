@@ -10,11 +10,20 @@
       # required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
     };
+    oci-containers = {
+      backend = "podman";
+    };
+    containers = {
+      enable = true;
+      cdi.dynamic.nvidia.enable = config.bchmnn.nvidia.enable;
+    };
   };
+
   programs = {
     dconf.enable = true;
     virt-manager.enable = true;
   };
+
   environment.systemPackages = with pkgs; [ virtiofsd ];
 
 }
