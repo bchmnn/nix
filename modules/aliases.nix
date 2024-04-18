@@ -1,8 +1,13 @@
 {
-  ls = "lsd --color=auto --hyperlink=auto";
-  la = "lsd -lAh --group-directories-first --hyperlink=auto";
-  lt = "lsd -lAh --group-directories-first --tree --hyperlink=auto";
-  llt = "unbuffer lsd -lAh --group-directories-first --tree --hyperlink=auto | less -r";
+  
+  ls = "eza --group-directories-first --hyperlink --icons";
+  la = "eza --group-directories-first --hyperlink --icons -la";
+  lt = "eza --group-directories-first --hyperlink --icons -la --tree";
+  llt = "unbuffer eza --group-directories-first --hyperlink --icons -la --tree | less -r";
+  # ls = "lsd --color=auto --hyperlink=auto";
+  # la = "lsd -lAh --group-directories-first --hyperlink=auto";
+  # lt = "lsd -lAh --group-directories-first --tree --hyperlink=auto";
+  # llt = "unbuffer lsd -lAh --group-directories-first --tree --hyperlink=auto | less -r";
 
   gg = "cd ~/code";
   # gs = "git status";

@@ -64,6 +64,7 @@
     ./audio.nix
     ./ausweisapp.nix
     ./bluetooth.nix
+    ./ccache.nix
     ./dbus.nix
     ./fonts.nix
     ./greetd.nix

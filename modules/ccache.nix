@@ -1,0 +1,5 @@
+{
+  programs.ccache = {
+    enable = true;
+  };
+}

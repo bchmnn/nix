@@ -46,6 +46,7 @@
   ] ++ lib.optionals nixosConfig.bchmnn.games.enable [
     openjdk17 # the open-source java development kit
     prismlauncher # a free, open source launcher for minecraft
+    # retroarchFull # multi-platform emulator frontend for libretro cores
 
   ] ++ lib.optionals nixosConfig.bchmnn.ratbag.enable [
     piper # gtk frontend for ratbagd mouse config daemon

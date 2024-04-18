@@ -22,7 +22,7 @@
     games.enable = true;
     ratbag.enable = true;
 
-    ai.enable = true;
+    ai.enable = false;
 
   };
 

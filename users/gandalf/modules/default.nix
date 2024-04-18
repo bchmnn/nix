@@ -2,6 +2,7 @@
   imports = [
     ./audio.nix
     ./dconf.nix
+    ./eza.nix
     ./fzf.nix
     ./gui
     ./git.nix
