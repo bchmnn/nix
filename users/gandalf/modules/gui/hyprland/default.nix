@@ -68,6 +68,13 @@ in
         disable_logs = false;
       };
       env = with lib; with nixosConfig.bchmnn;  [
+
+        # "HYPRCURSOR_THEME,hypr-macOS-Monterey"
+        # "HYPRCURSOR_SIZE,32"
+
+        "XCURSOR_THEME,macOS-Monterey"
+        "XCURSOR_SIZE,32"
+
         "CLUTTER_BACKEND,wayland"
         "GDK_BACKEND,wayland"
         "GDK_DPI_SCALE,1"
