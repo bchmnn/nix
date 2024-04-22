@@ -79,6 +79,8 @@ in
       modifier = "Mod4";
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.wofi}/bin/wofi";
+      # TODO for some reason bar only works when used with exec
+      bars = [];
       startup = with pkgs; [
         # TODO activate with systemd prbly requires a graphical.target?
         # { command = "${nixosConfig.systemd.package}/bin/systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
@@ -86,6 +88,7 @@ in
         # { command = "${nixosConfig.systemd.package}/bin/systemctl --user stop xdg-desktop-portal xdg-desktop-portal-wlr"; }
         # { command = "${nixosConfig.systemd.package}/bin/systemctl --user start xdg-desktop-portal xdg-desktop-portal-wlr"; }
         # { command = "${dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
+        { command = "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/swaybar.json -s ${config.xdg.configHome}/waybar/swaybar.css"; }
         { command = "${dbus}/bin/dbus-update-activation-environment --all"; }
         { command = "${kanshi}/bin/kanshi"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
@@ -226,7 +229,7 @@ in
       };
       seat = {
         "*" = {
-          xcursor_theme = common.gtk;
+          xcursor_theme = "macOS-Monterey 32";
         };
       };
       window = {
@@ -273,11 +276,6 @@ in
           childBorder = common.colorschemes.default.active;
         };
       };
-      bars = [
-        {
-          command = "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/swaybar.json -s ${config.xdg.configHome}/waybar/swaybar.css";
-        }
-      ];
     };
     extraConfig = ''
       for_window [title="Firefox — Sharing Indicator"] {

@@ -1,6 +1,5 @@
 { ... }: {
 
-
   imports = [ ./hardware.nix ];
 
   networking.hostName = "T430";
@@ -9,8 +8,8 @@
 
     gui = {
       enable = true;
-      greeter.enable = true;
-      flavour = [ "Hyprland" "sway" ];
+      greeter.enable = false;
+      flavour = [ "sway" ];
     };
     nvidia.enable = false;
     audio.enable = true;

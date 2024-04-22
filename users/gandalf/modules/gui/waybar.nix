@@ -66,10 +66,7 @@ in
             }
           },
           "clock": {
-            "actions": {
-              "on-click": "tz_up"
-            },
-            "format": "{:%a, %d %b, %H:%M}",
+            "format": "{:%a %b %d %H:%M}",
             "timezones": [
               "Europe/Berlin"
             ],
@@ -81,10 +78,30 @@ in
             "interval": 3,
             "tooltip": false
           },
+          "sway/mode": {
+            "format": "<span style=\"italic\">{}</span>"
+          },
+          "sway/window": {
+            "format": "{title}",
+          },
+          "sway/workspaces": {
+            "disable-scroll": true,
+            "persistent-workspaces": {
+              "1": [],
+              "2": [],
+              "3": [],
+              "4": [],
+              "5": [],
+              "6": [],
+              "7": [],
+              "8": [],
+              "9": [],
+              "10": [],
+            }
+          },
           "layer": "top",
           "margin": "5 5 5 5",
           "modules-center": [
-            "clock"
           ],
           "modules-left": [
             "sway/workspaces",
@@ -98,7 +115,8 @@ in
             "custom/mem",
             "temperature",
             "backlight",
-            "battery"
+            "battery",
+            "clock"
           ],
           "name": "swaybar",
           "network": {
@@ -136,22 +154,6 @@ in
             "on-click": "${pkgs.pavucontrol}/bin/pavucontrol",
             "reverse-scrolling": 1
           },
-          "sway/mode": {
-            "format": "<span style=\"italic\">{}</span>"
-          },
-          "sway/window": {
-            "format": "{title}",
-            "max-length": 43
-          },
-          "sway/workspaces": {
-            "disable-scroll": true,
-            "persistent-workspaces": {
-              "1": [],
-              "2": [],
-              "3": [],
-              "4": []
-            }
-          },
           "temperature": {
             "critical-threshold": 80,
             "format": "{temperatureC}°C {icon}",
@@ -166,141 +168,127 @@ in
           },
           "tray": {
             "icon-size": 16,
-            "spacing": 0
+            "show-passive-items": true,
+            "spacing": 4
           }
         }
       ]
     '';
 
     "waybar/swaybar.css".text = ''
-      @define-color bg-color #212529;
-
       window.swaybar,
       window.swaybar * {
-          border: none;
-          border-radius: 0;
-          font-family: DejaVuSansM Nerd Font;
-          min-height: 20px;
+        border: none;
+        border-radius: 10px;
+        font-family: DejaVuSansM Nerd Font;
+        min-height: 20px;
       }
 
       window.swaybar#waybar {
-          background: transparent;
+        background: #ffffff;
       }
 
       window.swaybar#waybar.hidden {
-          opacity: 0.2;
+        opacity: 0.2;
       }
 
       window.swaybar #workspaces {
-          padding-left: 8px;
-          padding-right: 8px;
-          margin-right: 8px;
-          border-radius: 10px;
-          transition: none;
-          background: @bg-color;
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-right: 8px;
+        transition: none;
       }
 
       window.swaybar #workspaces button {
-          transition: none;
-          color: #7c818c;
-          background: transparent;
-          padding: 5px;
-          font-size: 18px;
+        transition: none;
+        color: black;
+        background: transparent;
+        padding: 5px;
+        font-size: 18px;
+        border-radius: 0px;
+      }
+
+      window.swaybar #workspaces button.empty {
+        color: #7c818c;
       }
 
       window.swaybar #workspaces button.persistent {
-          color: #7c818c;
-          font-size: 12px;
-      }
-
-      window.swaybar #workspaces button:hover {
-          transition: none;
-          box-shadow: inherit;
-          text-shadow: inherit;
-          border-radius: inherit;
-          color: @bg-color;
-          background: #7c818c;
-      }
-
-      window.swaybar #workspaces button.focused {
-          color: white;
+        font-size: 12px;
       }
 
       window.swaybar #workspaces button.visible {
-          color: white;
+        color: black;
+        font-size: 18px;
+      }
+
+      window.swaybar #workspaces button.focused {
+        background: lightgray;
+      }
+
+      window.swaybar #workspaces button:hover {
+        color: white;
+        background: black;
       }
 
       window.swaybar #window {
-          padding-left: 16px;
-          padding-right: 16px;
-          margin-right: 8px;
-          border-radius: 10px 10px 10px 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 16px;
+        padding-right: 16px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #mode {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 16px;
+        padding-right: 16px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
-      window.swaybar #clock {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px 10px 10px 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+      window.swaybar #tray {
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: white;
+        background: rgb(66, 118, 185);
       }
 
       window.swaybar #network {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #pulseaudio {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #pulseaudio.muted {
-          background-color: #90b1b1;
-          color: #2a5c45;
+        color: gray;
       }
 
       window.swaybar #custom-mem {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #temperature {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #temperature.critical {
@@ -308,22 +296,19 @@ in
       }
 
       window.swaybar #backlight {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #battery {
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #battery.charging {
@@ -346,14 +331,12 @@ in
           animation-direction: alternate;
       }
 
-      window.swaybar #tray {
-          margin-right: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          border-radius: 10px;
-          transition: none;
-          color: #ffffff;
-          background: @bg-color;
+      window.swaybar #clock {
+        padding-left: 10px;
+        padding-right: 16px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       @keyframes blink {
@@ -587,7 +570,6 @@ in
       }
 
       window.hyprbar #network {
-        /* margin-right: 4px; */
         padding-left: 10px;
         padding-right: 10px;
         transition: none;
@@ -596,7 +578,6 @@ in
       }
 
       window.hyprbar #pulseaudio {
-        /* margin-right: 4px; */
         padding-left: 10px;
         padding-right: 10px;
         transition: none;
@@ -609,7 +590,6 @@ in
       }
 
       window.hyprbar #custom-mem {
-        /* margin-right: 8px; */
         padding-left: 10px;
         padding-right: 10px;
         transition: none;
@@ -618,7 +598,6 @@ in
       }
 
       window.hyprbar #temperature {
-        /* margin-right: 8px; */
         padding-left: 10px;
         padding-right: 10px;
         transition: none;
@@ -631,7 +610,6 @@ in
       }
 
       window.hyprbar #backlight {
-        /* margin-right: 8px; */
         padding-left: 10px;
         padding-right: 10px;
         transition: none;

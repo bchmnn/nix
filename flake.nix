@@ -12,7 +12,6 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland?ref=v0.39.0";
-      inputs.hyprland.follows = "nixpkgs";
     };
     hy3 = {
       url = "github:outfoxxed/hy3";
@@ -54,7 +53,7 @@
           ./modules
           ./hosts/T430
 
-          # nixos-hardware.nixosModules.lenovo-thinkpad-t430
+          nixos-hardware.nixosModules.lenovo-thinkpad-t430
 
           inputs.home-manager.nixosModules.home-manager
 

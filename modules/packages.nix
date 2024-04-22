@@ -38,6 +38,8 @@
     nodePackages.yarn
     nodePackages.pnpm
     mongodb-compass
+    ghidra-bin
+    hexedit
   ] ++ lib.optionals (gui.enable) [
     libnotify # a library that sends desktop notifications to a notification daemon
     xdg-utils # a set of command line tools that assist applications with a variety of desktop integration tasks
