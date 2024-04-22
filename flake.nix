@@ -23,7 +23,7 @@
     ags.url = "github:Aylur/ags";
 
   };
-  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       W530 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -52,8 +52,6 @@
 
           ./modules
           ./hosts/T430
-
-          nixos-hardware.nixosModules.lenovo-thinkpad-t430
 
           inputs.home-manager.nixosModules.home-manager
 

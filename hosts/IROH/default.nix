@@ -1,6 +1,12 @@
-{ ... }: {
+{ ... }@inputs: {
 
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-pc
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+  ];
 
   networking.hostName = "IROH";
 
@@ -8,8 +14,8 @@
 
     gui = {
       enable = true;
-      greeter.enable = true;
-      flavour = [ "Hyprland" "sway" "i3" ];
+      greeter.enable = false;
+      flavour = [ "sway" ];
     };
     nvidia.enable = true;
     audio.enable = true;

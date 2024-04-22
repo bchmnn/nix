@@ -1,6 +1,9 @@
-{ ... }: {
+{ ... }@inputs: {
 
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t430
+  ];
 
   networking.hostName = "T430";
 
