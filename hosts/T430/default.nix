@@ -3,6 +3,9 @@
   imports = [
     ./hardware.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t430
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
   networking.hostName = "T430";

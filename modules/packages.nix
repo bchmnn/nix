@@ -19,6 +19,7 @@
     xidel # command line tool to download and extract data from html/xml pages as well as json apis
     nvd # nix/nixos package version diff tool
     inotify-tools # a c library and a set of command-line programs providing a simple interface to inotify
+    wireguard-tools # tools for the wireguard secure network tunnel
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
@@ -27,6 +28,8 @@
     cargo
     go
     python312
+    python312Packages.ptpython
+    python312Packages.ipython
     lua
     nixpkgs-fmt
     openjdk17

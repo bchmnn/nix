@@ -35,7 +35,7 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.dmenu}/bin/dmenu_run";
       startup = with pkgs; [
-        { command = "${feh}/bin/feh --bg-fill ${common.wallpaper}"; }
+        { command = "${feh}/bin/feh --bg-fill ${common.wallpaper.default}"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }
         { command = "${udiskie}/bin/udiskie --tray"; }

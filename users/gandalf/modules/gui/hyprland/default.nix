@@ -88,7 +88,6 @@ in
 
         # qt
         "QT_QPA_PLATFORM,wayland-egl"
-        # "QT_QPA_PLATFORM,wayland"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 
         # java
@@ -97,7 +96,6 @@ in
       ] ++ optionals nvidia.enable [
         # nvidia
         "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
         # following causes Hyprland to crash on startup with 535 drivers
         # "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
@@ -105,7 +103,7 @@ in
       ];
       "exec-once" = with pkgs; [
         "${config.programs.waybar.package}/bin/waybar -c ${config.xdg.configHome}/waybar/hyprbar.json -s ${config.xdg.configHome}/waybar/hyprbar.css"
-        "${swaybg}/bin/swaybg -m fill -i ${common.wallpaper}"
+        "${swaybg}/bin/swaybg -m fill -i ${common.wallpaper.default}"
         "${dbus}/bin/dbus-update-activation-environment --all"
         "${kanshi}/bin/kanshi"
         "${networkmanagerapplet}/bin/nm-applet"

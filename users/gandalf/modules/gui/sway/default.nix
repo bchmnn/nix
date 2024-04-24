@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, nixosConfig, ... }:
 let
 
   cfg = config.wayland.windowManager.sway.config;
@@ -45,35 +45,39 @@ in
       gtk = true;
     };
     xwayland = true;
-    extraSessionCommands = ''
+    extraSessionCommands = with lib; with nixosConfig.bchmnn; ''
       export CLUTTER_BACKEND=wayland;
       export GDK_BACKEND=wayland;
       export GDK_DPI_SCALE=1;
       export NIXOS_OZONE_WL=1;
-      export WLR_NO_HARDWARE_CURSORS=1;
       export MOZ_ENABLE_WAYLAND=1;
       export MOZ_USE_XINPUT2=1;
       export XDG_SESSION_TYPE=wayland;
       export XDG_CURRENT_DESKTOP=sway;
-      # SDL:
+
+      # sdl
       export SDL_VIDEODRIVER=wayland
-      # QT (needs qt5.qtwayland in systemPackages):
+
+      # qt
       export QT_QPA_PLATFORM=wayland-egl
-      # export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      # Fix for some Java AWT applications (e.g. Android Studio),
-      # use this if they aren't displayed properly:
+
+      # java
       export _JAVA_AWT_WM_NONREPARENTING=1
       export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on";
 
-      # Nvidia
-      # export WLR_RENDERER=vulkan;
+    '' + optionalString nvidia.enable ''
+      # nvidia
+      export WLR_RENDERER=vulkan;
+      export LIBVA_DRIVER_NAME,nvidia;
       # export GBM_BACKEND=nvidia-drm;
-      # export __GL_GSYNC_ALLOWED=0;
-      # export __GL_VRR_ALLOWED=0;
-      # export __GLX_VENDOR_LIBRARY_NAME=nvidia;
-      # Xwayland compat
-      # export XWAYLAND_NO_GLAMOR=1;
+      export __GL_GSYNC_ALLOWED=0;
+      export __GL_VRR_ALLOWED=0;
+      export __GLX_VENDOR_LIBRARY_NAME=nvidia;
+      export WLR_NO_HARDWARE_CURSORS=1;
+
+      # xwayland compat
+      export XWAYLAND_NO_GLAMOR=1;
     '';
     config = {
       modifier = "Mod4";
@@ -116,7 +120,7 @@ in
         };
       };
       output = {
-        "*".bg = "${common.wallpaper} fill";
+        "*".bg = "${common.wallpaper.default} fill";
       };
       left = "h";
       down = "j";
@@ -124,7 +128,7 @@ in
       right = "l";
 
       keybindings = {
-        "${cfg.modifier}+Ctrl+Shift+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ffffff --key-hl-color ${common.colorschemes.default._activeDark} --line-color 00000000 --inside-color 00000088 --inside-ver-color ${common.colorschemes.default._activeDark} --separator-color 00000000 --text-color ${common.colorschemes.default._activeDark} --fade-in 0.1";
+        "${cfg.modifier}+Ctrl+Shift+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color ffffff --key-hl-color ${common.colorschemes.default._black} --line-color 00000000 --inside-color 00000088 --inside-ver-color ${common.colorschemes.default._white} --separator-color 00000000 --text-color ${common.colorschemes.default._white} --fade-in 0.1";
 
         # Basics
         "${cfg.modifier}+Return" = "exec ${cfg.terminal}";
