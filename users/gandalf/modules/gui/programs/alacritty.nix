@@ -8,17 +8,17 @@ let
     +++ b/alabaster.toml
     @@ -2,11 +2,11 @@
      # author tonsky
-
+     
      [colors.primary]
     -background = '#F7F7F7'
     +background = '#FFFFFF'
      foreground = '#434343'
-
+     
      [colors.cursor]
     -text = '#F7F7F7'
     +text = '#FFFFFF'
      cursor = '#434343'
-
+     
      [colors.normal]
   '';
   alacritty-theme-patched = pkgs.alacritty-theme.overrideAttrs (final: previous: {
