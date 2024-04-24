@@ -24,6 +24,7 @@
     # languages
     gcc13
     clang
+    universal-ctags
     rustc
     cargo
     go
