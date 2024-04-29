@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
 
   /*
   xdg.configFile."nvim" = {
@@ -6,6 +6,15 @@
     recursive = true;
   };
   */
+
+  home.packages = with pkgs; [
+    lua-language-server
+    clang-tools
+    rust-analyzer
+    gopls
+    nixd
+    typescript
+  ];
 
   programs.neovim = {
     enable = true;

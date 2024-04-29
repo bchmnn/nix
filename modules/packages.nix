@@ -37,7 +37,7 @@
     javaPackages.openjfx17
     gradle_7
     bun-baseline
-    nodejs_21
+    nodejs_20
     nodenv
     nodePackages.yarn
     nodePackages.pnpm

@@ -69,7 +69,7 @@ in
     '' + optionalString nvidia.enable ''
       # nvidia
       export WLR_RENDERER=vulkan;
-      export LIBVA_DRIVER_NAME,nvidia;
+      # export LIBVA_DRIVER_NAME,nvidia;
       # export GBM_BACKEND=nvidia-drm;
       export __GL_GSYNC_ALLOWED=0;
       export __GL_VRR_ALLOWED=0;

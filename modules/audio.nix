@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }: lib.mkIf config.bchmnn.audio.enable {
   # Enable pipewire - audio
-  services.pipewire = {
+  services.pipewire = lib.mkIf (!builtins.elem "gnome" config.bchmnn.gui.flavour) {
     enable = true;
     audio.enable = true;
     alsa.enable = true;

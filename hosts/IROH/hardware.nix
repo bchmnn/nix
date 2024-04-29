@@ -19,6 +19,7 @@
   ];
 
   # TODO once the 550 drivers are better, switch to them
+  /*
   hardware.nvidia.package =
     let
       rcu_patch = pkgs.fetchpatch {
@@ -35,6 +36,7 @@
       persistencedSha256 = "sha256-d0Q3Lk80JqkS1B54Mahu2yY/WocOqFFbZVBh+ToGhaE=";
       patches = [ rcu_patch ];
     };
+  */
 
   boot.resumeDevice = "/dev/disk/by-label/ROOT";
 

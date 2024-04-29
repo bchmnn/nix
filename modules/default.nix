@@ -65,9 +65,9 @@
     ./ausweisapp.nix
     ./bluetooth.nix
     ./ccache.nix
+    ./desktop.nix
     ./dbus.nix
     ./fonts.nix
-    ./greetd.nix
     ./gstreamer.nix
     ./i18n.nix
     ./kdeconnect.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, ... }@inputs: {
   nix = {
     # TODO remove once 24.05 is released
     package = pkgs.nixVersions.unstable;

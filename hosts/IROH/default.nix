@@ -15,11 +15,11 @@
     gui = {
       enable = true;
       greeter.enable = false;
-      flavour = [ "sway" ];
+      flavour = [ "i3" ];
     };
     nvidia.enable = true;
     audio.enable = true;
-    bluetooth.enable = true;
+    bluetooth.enable = false;
     printing.enable = true;
     vpn.enable = true;
 

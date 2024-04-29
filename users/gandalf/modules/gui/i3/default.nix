@@ -10,6 +10,7 @@ in
 
   imports = [
     ./autorandr.nix
+    ./rofi.nix
   ];
 
   home.packages = with pkgs; [
@@ -26,6 +27,7 @@ in
     nextcloud-client # nextcloud client to connect to any instance
     libsForQt5.kdeconnect-kde # sync phone and pc
     system-config-printer # printer manager
+    gnome3.adwaita-icon-theme
   ];
 
   xsession.windowManager.i3 = {
@@ -33,8 +35,10 @@ in
     config = {
       modifier = "Mod4";
       terminal = "${pkgs.alacritty}/bin/alacritty";
-      menu = "${pkgs.dmenu}/bin/dmenu_run";
+      menu = "${config.programs.rofi.package}/bin/rofi -show drun";
       startup = with pkgs; [
+        { command = "${gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11"; }
+        { command = "${autorandr}/bin/autorandr -c"; }
         { command = "${feh}/bin/feh --bg-fill ${common.wallpaper.default}"; }
         { command = "${networkmanagerapplet}/bin/nm-applet"; }
         { command = "${blueman}/bin/blueman-applet"; }
