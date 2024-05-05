@@ -9,19 +9,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland?ref=v0.39.0";
-    };
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    waybar.url = "github:Alexays/Waybar";
-
-    ags.url = "github:Aylur/ags";
-
   };
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
@@ -29,8 +16,6 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-
-          inputs.hyprland.nixosModules.default
 
           ./modules
           ./hosts/W530
@@ -48,8 +33,6 @@
         specialArgs = inputs;
         modules = [
 
-          inputs.hyprland.nixosModules.default
-
           ./modules
           ./hosts/T430
 
@@ -65,8 +48,6 @@
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
-
-          inputs.hyprland.nixosModules.default
 
           ./modules
           ./hosts/IROH

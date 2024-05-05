@@ -11,7 +11,7 @@
       flavour = mkOption {
         type = types.listOf types.str;
         default = [ "sway" ];
-        example = [ "sway" "i3" "Hyprland" ];
+        example = [ "sway" "i3" ];
         description = ''
           The flavour (WM) for your system to use
         '';

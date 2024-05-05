@@ -16,8 +16,6 @@ in
 
   home-manager.users.gandalf = { pkgs, ... }: {
     imports = [
-      inputs.hyprland.homeManagerModules.default
-      inputs.ags.homeManagerModules.default
       ./modules
     ];
 
