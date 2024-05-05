@@ -13,7 +13,7 @@
     rust-analyzer
     gopls
     nixd
-    typescript
+    nodePackages_latest.typescript-language-server
   ];
 
   programs.neovim = {

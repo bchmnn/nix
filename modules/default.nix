@@ -61,6 +61,7 @@
   };
 
   imports = [
+    ./arr.nix
     ./audio.nix
     ./ausweisapp.nix
     ./bluetooth.nix
@@ -73,7 +74,6 @@
     ./kdeconnect.nix
     ./keyd.nix
     ./man.nix
-    ./mozillavpn.nix
     ./network.nix
     ./nh.nix
     ./nix-ld.nix
@@ -82,12 +82,10 @@
     ./ollama.nix
     ./opengl.nix
     ./openssh.nix
-    ./openvpn.nix
     ./power.nix
     ./packages.nix
     ./printing.nix
     ./ratbag.nix
-    ./rr.nix
     ./security.nix
     ./shell.nix
     ./steam.nix
@@ -95,6 +93,7 @@
     ./tts.nix
     ./udisks2.nix
     ./virtualisation.nix
+    ./vpn.nix
     ./xdg-portal.nix
   ];
 }

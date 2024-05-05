@@ -9,6 +9,7 @@
     wget # tool for retrieving files using http, https, and ftp
     neofetch # a fast, highly customizable system info script
     lsd # the next gen ls command
+    eza # a modern, maintained replacement for ls
     ripgrep # a utility that combines the usability of the silver searcher with the raw speed of grep
     ripgrep-all # ripgrep, but also search in pdfs, e-books, office documents, zip, tar.gz, and more
     expect # a tool for automating interactive applications
