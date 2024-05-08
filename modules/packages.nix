@@ -5,6 +5,7 @@
     lshw # provide detailed information on the hardware configuration of the machine
     git # distributed version control system
     gnumake # a tool to control the generation of non-source files from sources
+    parallel # shell tool for executing jobs in parallel
     mercurial # a fast, lightweight scm system for very large distributed projects
     wget # tool for retrieving files using http, https, and ftp
     neofetch # a fast, highly customizable system info script
@@ -21,6 +22,7 @@
     nvd # nix/nixos package version diff tool
     inotify-tools # a c library and a set of command-line programs providing a simple interface to inotify
     wireguard-tools # tools for the wireguard secure network tunnel
+    mkcert # a simple tool for making locally-trusted development certificates
   ] ++ lib.optionals (devenv.enable) [
     # languages
     gcc13
