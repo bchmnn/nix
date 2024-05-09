@@ -7,7 +7,6 @@
     ranger # a vim-inspired filemanager for the console 
     gdu # fast disk usage analyzer with console interface written in go
     duf # disk usage/free utility - a better 'df' alternative
-    phoronix-test-suite # the phoronix test suite open-source, cross-platform automated testing/benchmarking software
     stress # simple workload generator for posix systems. it imposes a configurable amount of cpu, memory, i/o, and disk stress on the system
     s-tui # stress-terminal ui monitoring tool
     fio # flexible io tester - an io benchmark tool
