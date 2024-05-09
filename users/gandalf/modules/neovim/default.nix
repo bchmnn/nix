@@ -13,7 +13,8 @@
     rust-analyzer
     gopls
     nixd
-    nodePackages_latest.typescript-language-server
+    vscode-langservers-extracted
+    tailwindcss-language-server
   ];
 
   programs.neovim = {
