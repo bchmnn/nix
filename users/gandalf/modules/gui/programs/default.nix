@@ -33,7 +33,7 @@
 
     obsidian # a powerful knowledge base that works on top of a local folder of plain text markdown files
     gimp # the gnu image manipulation program
-    calibre # comprehensive e-book software
+    (calibre.override { unrarSupport = true; })
     libreoffice # comprehensive, professional-quality productivity suite, a variant of openoffice.org
     xournalpp # a handwriting notetaking software with pdf annotation support
     libsForQt5.okular # kde document viewer

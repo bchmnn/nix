@@ -13,7 +13,9 @@
     rust-analyzer
     gopls
     nixd
+    ruff # an extremely fast python linter
     vscode-langservers-extracted
+    nodePackages.typescript-language-server
     tailwindcss-language-server
   ];
 
