@@ -13,7 +13,7 @@
     rust-analyzer
     gopls
     nixd
-    nodepackages.pyright # type checker for the python language
+    nodePackages.pyright # type checker for the python language
     ruff # an extremely fast python linter
     vscode-langservers-extracted
     nodePackages.typescript-language-server
