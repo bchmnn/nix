@@ -15,9 +15,10 @@
     nixd
     nodePackages.pyright # type checker for the python language
     ruff # an extremely fast python linter
-    vscode-langservers-extracted
+    vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
     nodePackages.typescript-language-server
     tailwindcss-language-server
+    texlab # implementation of the language server protocol for latex
   ];
 
   programs.neovim = {
