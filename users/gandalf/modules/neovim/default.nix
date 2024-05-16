@@ -8,6 +8,7 @@
   */
 
   home.packages = with pkgs; [
+    tree-sitter # parser generator tool and an incremental parsing library
     lua-language-server
     clang-tools
     rust-analyzer

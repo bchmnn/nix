@@ -15,6 +15,7 @@
     imagemagick # software suite to create, edit, compose, or convert bitmap images
     ghostscript # postscript interpreter (mainline version)
     ventoy-full # bootable usb solution
+    isisdl # downloader for isis of tu-berlin
   ];
 
 }
