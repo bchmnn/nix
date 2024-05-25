@@ -2,7 +2,6 @@
 
 import sys
 import math
-import os
 
 try:
     import notify2
@@ -11,7 +10,6 @@ except:
     exit(1)
 
 notify2.init('pppdf')
-# notify2.Notification('pppdf', f'Working dir: {os.getcwd()}').show()
 
 try:
     import pikepdf
