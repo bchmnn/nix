@@ -16,6 +16,7 @@
     ghostscript # postscript interpreter (mainline version)
     ventoy-full # bootable usb solution
     isisdl # downloader for isis of tu-berlin
+    sage # open source mathematics software, free alternative to magma, maple, mathematica, and matlab
   ];
 
 }

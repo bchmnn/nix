@@ -27,10 +27,10 @@
     # languages
     gcc13
     clang
-    universal-ctags
+    universal-ctags # a maintained ctags implementation
     rustc
-    cargo
-    go
+    cargo # downloads your rust project's dependencies and builds your project
+    go # go programming language
     python312
     python312Packages.ptpython
     python312Packages.ipython
@@ -39,7 +39,6 @@
     openjdk17
     javaPackages.openjfx17
     gradle_7
-    bun-baseline
     nodejs_20
     nodenv
     nodePackages.yarn
