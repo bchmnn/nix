@@ -31,9 +31,12 @@
     rustc
     cargo # downloads your rust project's dependencies and builds your project
     go # go programming language
-    python312
-    python312Packages.ptpython
-    python312Packages.ipython
+    (python312.withPackages (p: with p; [
+      ptpython # an advanced python repl
+      ipython # ipython: productive interactive computing
+      pycryptodome # self-contained cryptographic library
+      gmpy2 # interface to gmp, mpfr, and mpc for python 3.7+
+    ]))
     lua
     nixpkgs-fmt
     openjdk17
