@@ -4,7 +4,7 @@ let
   icons = {
     chromium = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Chromium_Logo.svg/240px-Chromium_Logo.svg.png";
-      sha256 = "ff6383a5c08745100e1f8720397c3d6e1b30bc6d4a329cf44bbac16ec03948e7";
+      sha256 = "df526fa1ba625bd619a7a938aeb504e8e3d9d7e55adc63f9802d8eadb4a3fb58";
       meta.licenses = lib.licenses.publicDomain;
     };
     spotify = pkgs.fetchurl {
@@ -14,17 +14,17 @@ let
     };
     teams = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/258px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png";
-      sha256 = "a7bf37b6132e45c3c3314e7ed3a465138caabe3d87535a8b82a84be6a5f70dac";
+      sha256 = "3a7caf6bdc2f03833cb4273774af6859b29676c42844bb8f9743074768316a1f";
       meta.licenses = lib.licenses.publicDomain;
     };
     outlook = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/258px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png";
-      sha256 = "565fff2ed6a3c4c98daf7a2b56aad386c2d076f4f5b88199785593eb380eb3d4";
+      sha256 = "06d3265352f03ac7ac65c230eae019a9a1e2bc94aeb8b24247a5484c4f3e15a1";
       meta.licenses = lib.licenses.publicDomain;
     };
     whatsapp = pkgs.fetchurl {
       url = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png";
-      sha256 = "65b4eeab9b5a02c46f75f26abeac3c72a479cf8fce829b7f9c46f59e9a7f9785";
+      sha256 = "44ce29edaaba4fcd515702cef2f08ac6c1289f33c1d5c8983761db9d7ad8061d";
       meta.licenses = lib.licenses.publicDomain;
     };
   };

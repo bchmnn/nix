@@ -5,9 +5,10 @@
   programs.sway.enable = builtins.elem "sway" gui.flavour;
   services.xserver.windowManager.i3.enable = builtins.elem "i3" gui.flavour;
 
+  services.libinput.enable = true;
+
   services.xserver = {
     enable = (builtins.elem "i3" gui.flavour || builtins.elem "gnome" gui.flavour);
-    libinput.enable = true;
     desktopManager.gnome.enable = builtins.elem "gnome" gui.flavour;
     displayManager = {
       gdm.enable = builtins.elem "gnome" gui.flavour;

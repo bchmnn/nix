@@ -21,9 +21,10 @@
     };
     containers = {
       enable = true;
-      cdi.dynamic.nvidia.enable = config.bchmnn.nvidia.enable;
     };
   };
+
+  hardware.nvidia-container-toolkit.enable = config.bchmnn.nvidia.enable;
 
   programs = {
     dconf.enable = true;
