@@ -1,7 +1,6 @@
 { config, lib, ... }: {
 
   security.polkit.enable = true;
-  # rtkit is optional but recommended
   security.rtkit.enable = true;
   networking.firewall.enable = true;
 
@@ -14,7 +13,7 @@
 }) // (lib.mkIf (config.bchmnn.devenv.enable) {
 
   networking.firewall = {
-    allowedTCPPorts = [ 3000 ];
+    allowedTCPPorts = [ 3000 6969 8080 ];
   };
 
 })
