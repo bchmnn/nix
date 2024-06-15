@@ -12,6 +12,7 @@
     lua-language-server
     clang-tools
     rust-analyzer
+    rustfmt
     gopls
     nixd
     nodePackages.pyright # type checker for the python language
