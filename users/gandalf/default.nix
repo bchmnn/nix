@@ -5,7 +5,7 @@ in
 {
   users.users.gandalf = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" "wireshark" ];
   };
 
   home-manager.useGlobalPkgs = true;
