@@ -78,6 +78,10 @@ in
             "interval": 3,
             "tooltip": false
           },
+          "disk": {
+            "format": "{specific_free:0.0f}GB ",
+            "unit": "GB"
+          },
           "sway/mode": {
             "format": "<span style=\"italic\">{}</span>"
           },
@@ -112,6 +116,7 @@ in
             "tray",
             "network",
             "pulseaudio",
+            "disk",
             "custom/mem",
             "temperature",
             "backlight",
@@ -273,6 +278,14 @@ in
 
       window.swaybar #pulseaudio.muted {
         color: gray;
+      }
+
+      window.swaybar #disk {
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
       }
 
       window.swaybar #custom-mem {
