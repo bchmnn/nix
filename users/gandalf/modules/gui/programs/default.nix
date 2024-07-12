@@ -2,7 +2,7 @@
 
   imports = [
     ./alacritty.nix
-    ./chromium.nix
+    ./chromium
     ./discord.nix
     ./keyring.nix
     ./obs.nix
