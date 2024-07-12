@@ -38,6 +38,10 @@
       enable = mkEnableOption "vpn";
     };
 
+    sync = {
+      enable = mkEnableOption "sync";
+    };
+
     devenv = {
       enable = mkEnableOption "devenv";
     };

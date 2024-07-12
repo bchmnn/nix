@@ -22,6 +22,7 @@
     bluetooth.enable = true;
     printing.enable = true;
     vpn.enable = true;
+    sync.enable = true;
 
     devenv.enable = true;
     virtualisation.enable = true;

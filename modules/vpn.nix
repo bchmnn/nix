@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: lib. mkIf config.bchmnn.vpn.enable {
+{ pkgs, lib, config, ... }: lib.mkIf config.bchmnn.vpn.enable {
 
   environment.systemPackages = with pkgs; [
     openvpn3

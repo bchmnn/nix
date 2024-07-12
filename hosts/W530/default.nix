@@ -1,6 +1,11 @@
-{ ... }: {
+{ ... }@inputs: {
 
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call
+    inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+  ];
 
   networking.hostName = "W530";
 
@@ -8,14 +13,15 @@
 
     gui = {
       enable = true;
-      greeter.enable = true;
-      flavour = [ "sway" "i3" ];
+      greeter.enable = false;
+      flavour = [ "sway" ];
     };
     nvidia.enable = false;
     audio.enable = true;
     bluetooth.enable = true;
     printing.enable = true;
     vpn.enable = true;
+    sync.enable = false;
 
     devenv.enable = true;
     virtualisation.enable = true;

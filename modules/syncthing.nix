@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, config, ... }: lib.mkIf config.bchmnn.sync.enable {
 
   services.syncthing = {
     enable = true;
