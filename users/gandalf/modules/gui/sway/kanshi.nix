@@ -3,6 +3,7 @@
   services.kanshi = {
     enable = true;
 
+    # TODO: profiles is deprecated
     profiles = {
 
       nomad = {
