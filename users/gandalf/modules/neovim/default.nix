@@ -17,6 +17,7 @@
     nixd
     nodePackages.pyright # type checker for the python language
     ruff # an extremely fast python linter
+    black
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
     nodePackages.typescript-language-server
     tailwindcss-language-server
