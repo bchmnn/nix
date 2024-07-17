@@ -1,10 +1,10 @@
 { pkgs, ... }: {
 
   /*
-  xdg.configFile."nvim" = {
-    source = ./config;
-    recursive = true;
-  };
+    xdg.configFile."nvim" = {
+      source = ./config;
+      recursive = true;
+    };
   */
 
   home.packages = with pkgs; [
@@ -17,10 +17,12 @@
     nixd
     nodePackages.pyright # type checker for the python language
     ruff # an extremely fast python linter
-    black
-    vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
+    black # uncompromising python code formatter
+    isort # python utility / library to sort python imports
+    vscode-langservers-extracted # html/css/json/eslint language servers extracted from vscode
     nodePackages.typescript-language-server
     tailwindcss-language-server
+    prettierd # prettier, as a daemon, for improved formatting speed
     texlab # implementation of the language server protocol for latex
   ];
 
