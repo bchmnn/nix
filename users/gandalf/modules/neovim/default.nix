@@ -22,8 +22,11 @@
     vscode-langservers-extracted # html/css/json/eslint language servers extracted from vscode
     nodePackages.typescript-language-server
     tailwindcss-language-server
+    nodePackages.prettier # prettier is an opinionated code formatter
     prettierd # prettier, as a daemon, for improved formatting speed
     texlab # implementation of the language server protocol for latex
+    yamlfmt # extensible command line tool or library to format yaml files
+    yamlfix # python yaml formatter that keeps your comments
   ];
 
   programs.neovim = {
