@@ -25,6 +25,7 @@
 
     gnome.nautilus # the file manager for gnome
     gnome.simple-scan # simple scanning utility
+    gnome.gnome-font-viewer # program that can preview fonts and create thumbnails for fonts
     pppdf
     feh # a light-weight image viewer
     vlc # cross-platform media player and streaming server
