@@ -4,6 +4,7 @@
     ./alacritty.nix
     ./chromium
     ./discord.nix
+    ./games.nix
     ./keyring.nix
     ./obs.nix
     ./vscode.nix
@@ -23,7 +24,6 @@
     signal-desktop # private, simple, and secure messenger
     zoom-us # zoom.us video conferencing application
 
-    gnome.nautilus # the file manager for gnome
     gnome.simple-scan # simple scanning utility
     gnome.gnome-font-viewer # program that can preview fonts and create thumbnails for fonts
     pppdf

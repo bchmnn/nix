@@ -26,7 +26,7 @@
 
     devenv.enable = true;
     virtualisation.enable = true;
-    games.enable = false;
+    games.enable = true;
     ratbag.enable = true;
 
     ai.enable = false;

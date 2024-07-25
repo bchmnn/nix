@@ -78,6 +78,7 @@
     ./kdeconnect.nix
     ./keyd.nix
     ./man.nix
+    ./nautilus.nix
     ./network.nix
     ./nh.nix
     ./nix-ld.nix
@@ -98,6 +99,7 @@
     ./udisks2.nix
     ./virtualisation.nix
     ./vpn.nix
+    ./wine.nix
     ./xdg-portal.nix
   ];
 }
