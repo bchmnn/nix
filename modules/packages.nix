@@ -43,6 +43,8 @@
     openjdk17
     javaPackages.openjfx17
     gradle_7
+    maven
+    ant
     nodejs_20
     nodenv
     nodePackages.yarn
