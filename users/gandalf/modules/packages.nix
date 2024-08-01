@@ -16,7 +16,7 @@
     ghostscript # postscript interpreter (mainline version)
     pdftk # command-line tool for working with pdfs
     ventoy-full # bootable usb solution
-    isisdl # downloader for isis of tu-berlin
+    unstable.isisdl # downloader for isis of tu-berlin
     sage # open source mathematics software, free alternative to magma, maple, mathematica, and matlab
   ];
 

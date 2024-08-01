@@ -9,7 +9,12 @@ buildPythonApplication {
     pkgs.gobject-introspection
   ];
 
-  propagatedBuildInputs = with python3Packages; [ pkgs.gtk3 pygobject3 notify2 pikepdf ];
+  propagatedBuildInputs = with python3Packages; [
+    pkgs.gtk3
+    pygobject3
+    notify2
+    pikepdf
+  ];
 
   dontUnpack = true;
   format = "other";

@@ -15,7 +15,6 @@
         mfcl3750cdwlpr = (super.callPackage ../overlays/mfcl3750cdw.nix { }).driver;
         mfcl3750cdwcupswrapper = (super.callPackage ../overlays/mfcl3750cdw.nix { }).cupswrapper;
         pppdf = (super.python3Packages.callPackage ../overlays/pppdf { });
-        isisdl = (super.python3Packages.callPackage ../overlays/isisdl.nix { });
         iglesia-light = (super.callPackage ../overlays/fonts/iglesia-light.nix { });
       })
     ];
