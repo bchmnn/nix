@@ -8,7 +8,7 @@
     parallel # shell tool for executing jobs in parallel
     mercurial # a fast, lightweight scm system for very large distributed projects
     wget # tool for retrieving files using http, https, and ftp
-    neovim # vim text editor fork focused on extensibility and agility
+    unstable.neovim-unwrapped # vim text editor fork focused on extensibility and agility
     neofetch # a fast, highly customizable system info script
     lsd # the next gen ls command
     eza # a modern, maintained replacement for ls

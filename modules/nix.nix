@@ -9,6 +9,9 @@
   nixpkgs = {
     overlays = [
       (self: super: {
+        unstable = import inputs.nixpkgs-unstable {
+          system = super.system;
+        };
         mfcl3750cdwlpr = (super.callPackage ../overlays/mfcl3750cdw.nix { }).driver;
         mfcl3750cdwcupswrapper = (super.callPackage ../overlays/mfcl3750cdw.nix { }).cupswrapper;
         pppdf = (super.python3Packages.callPackage ../overlays/pppdf { });
