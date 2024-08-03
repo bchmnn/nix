@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, pkgs, ... }:
+{ config, lib, modulesPath, ... }:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -18,7 +18,30 @@
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
-  # TODO once the 550 drivers are better, switch to them
+  /*
+  hardware.nvidia.package =
+    config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "555.52.04";
+      sha256_64bit = "sha256-nVOubb7zKulXhux9AruUTVBQwccFFuYGWrU1ZiakRAI=";
+      sha256_aarch64 = "sha256-Kt60kTTO3mli66De2d1CAoE3wr0yUbBe7eqCIrYHcWk=";
+      openSha256 = "sha256-wDimW8/rJlmwr1zQz8+b1uvxxxbOf3Bpk060lfLKuy0=";
+      settingsSha256 = "sha256-PMh5efbSEq7iqEMBr2+VGQYkBG73TGUh6FuDHZhmwHk=";
+      persistencedSha256 = "sha256-KAYIvPjUVilQQcD04h163MHmKcQrn2a8oaXujL2Bxro=";
+    };
+  */
+
+  /*
+  hardware.nvidia.package =
+    config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "560.28.03";
+      sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
+      sha256_aarch64 = "sha256-+u0ZolZcZoej4nqPGmZn5qpyynLvu2QSm9Rd3wLdDmM=";
+      openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
+      settingsSha256 = "sha256-b4nhUMCzZc3VANnNb0rmcEH6H7SK2D5eZIplgPV59c8=";
+      persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
+    };
+  */
+
   /*
   hardware.nvidia.package =
     let
