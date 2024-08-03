@@ -5,17 +5,25 @@ let
   # common = (import ../common.nix) { pkgs = pkgs; lib = lib; };
   common = (import ../common.nix) { inherit pkgs; inherit lib; };
 
+  start-polybar = pkgs.writeShellScript "start-polybar" ''
+    ${pkgs.polybarFull}/bin/polybar-msg cmd quit
+    echo "---" | tee -a /tmp/polybar.log
+    ${pkgs.polybarFull}/bin/polybar 2>&1 | tee -a /tmp/polybar.log & disown
+  '';
+
 in
 {
 
   imports = [
     ./autorandr.nix
+    ./polybar.nix
     ./rofi.nix
   ];
 
   home.packages = with pkgs; [
     alacritty
     dmenu
+    xclip # tool to access the x clipboard from a console application
     wireplumber
     feh # lightweight image viewer (also sets wallpaper)
     brightnessctl # control screen brightness
@@ -34,9 +42,11 @@ in
     enable = true;
     config = {
       modifier = "Mod4";
+      bars = [ ];
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${config.programs.rofi.package}/bin/rofi -show drun";
       startup = with pkgs; [
+        { command = "${start-polybar}"; }
         { command = "${gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11"; }
         { command = "${autorandr}/bin/autorandr -c"; }
         { command = "${feh}/bin/feh --bg-fill ${common.wallpaper.default}"; }
