@@ -18,6 +18,7 @@
     ventoy-full # bootable usb solution
     unstable.isisdl # downloader for isis of tu-berlin
     sage # open source mathematics software, free alternative to magma, maple, mathematica, and matlab
+    filebrowser # filebrowser is a web application for managing files and directories
   ];
 
 }
