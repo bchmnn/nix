@@ -175,11 +175,19 @@ in
         "${cfg.modifier}+Shift+d" = "focus mode_toggle";
 
         # Scratchpad
-        "${cfg.modifier}+Shift+minus" = "move scratchpad";
-        "${cfg.modifier}+minus" = "scratchpad show";
+        # "${cfg.modifier}+Shift+minus" = "move scratchpad";
+        # "${cfg.modifier}+minus" = "scratchpad show";
 
         # Resize mode
         "${cfg.modifier}+r" = "mode resize";
+
+        # Outer gaps
+        "${cfg.modifier}+equal" = "gaps horizontal current minus 200; gaps vertical current minus 100";
+        "${cfg.modifier}+minus" = "gaps horizontal current plus 200; gaps vertical current plus 100";
+
+        "${cfg.modifier}+bracketright" = "gaps outer current set 5";
+        "${cfg.modifier}+bracketleft" = "gaps horizontal current set 800; gaps vertical current set 400";
+
 
         # Multimedia Keys
         "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
