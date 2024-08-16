@@ -56,6 +56,7 @@ in
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
         { command = "${system-config-printer}/bin/system-config-printer-applet"; }
+        { command = "${alacritty}/bin/alacritty --class dropdown --title dropdown"; always = true; }
       ];
       fonts = {
         names = [ common.font ];
@@ -65,6 +66,26 @@ in
       window = {
         titlebar = false;
         border = 4;
+        commands = [
+          {
+            command = "floating enable";
+            criteria = {
+              instance = "dropdown";
+            };
+          }
+          {
+            command = "resize set 1400 800";
+            criteria = {
+              instance = "dropdown";
+            };
+          }
+          {
+            command = "move scratchpad";
+            criteria = {
+              instance = "dropdown";
+            };
+          }
+        ];
       };
       gaps = {
         inner = 5;
@@ -184,10 +205,12 @@ in
         # Outer gaps
         "${cfg.modifier}+equal" = "gaps horizontal current minus 200; gaps vertical current minus 100";
         "${cfg.modifier}+minus" = "gaps horizontal current plus 200; gaps vertical current plus 100";
-
         "${cfg.modifier}+bracketright" = "gaps outer current set 5";
         "${cfg.modifier}+bracketleft" = "gaps horizontal current set 800; gaps vertical current set 400";
 
+        # Dropdown term
+        "${cfg.modifier}+grave" = "[instance=\"dropdown\"] scratchpad show; [instance=\"dropdown\"] move position center";
+        "${cfg.modifier}+Escape" = "[instance=\"dropdown\"] scratchpad show; [instance=\"dropdown\"] move position center";
 
         # Multimedia Keys
         "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";

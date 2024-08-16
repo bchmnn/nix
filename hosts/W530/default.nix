@@ -17,7 +17,10 @@
       flavour = [ "sway" ];
     };
     nvidia.enable = false;
-    audio.enable = true;
+    audio = {
+      enable = true;
+      pipewire-wine-fix.enable = false;
+    };
     bluetooth.enable = true;
     printing.enable = true;
     vpn.enable = true;

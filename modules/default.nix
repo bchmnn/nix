@@ -24,6 +24,9 @@
 
     audio = {
       enable = mkEnableOption "audio";
+      pipewire-wine-fix = {
+        enable = mkEnableOption "pipewire-wine-fix";
+      };
     };
 
     bluetooth = {

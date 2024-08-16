@@ -18,7 +18,10 @@
       flavour = [ "i3" ];
     };
     nvidia.enable = true;
-    audio.enable = true;
+    audio = {
+      enable = true;
+      pipewire-wine-fix.enable = true;
+    };
     bluetooth.enable = false;
     printing.enable = true;
     vpn.enable = true;
