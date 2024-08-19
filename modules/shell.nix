@@ -15,8 +15,8 @@ in
     shellAliases = aliases;
   };
 
-  programs.htop = {
-    enable = true;
+  programs = {
+    htop.enable = true;
+    iftop.enable = true;
   };
-
 }

@@ -16,6 +16,7 @@
     "resume_offset=533760"
     "nvidia_drm.modeset=1"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # "intel_pstate=disable"
   ];
 
   /*

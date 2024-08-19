@@ -81,6 +81,7 @@
     ./kdeconnect.nix
     ./keyd.nix
     ./man.nix
+    ./memtest86.nix
     ./nautilus.nix
     ./network.nix
     ./nh.nix

@@ -36,6 +36,7 @@ in
     libsForQt5.kdeconnect-kde # sync phone and pc
     system-config-printer # printer manager
     gnome3.adwaita-icon-theme
+    maim
   ];
 
   xsession.windowManager.i3 = {
@@ -225,6 +226,9 @@ in
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+
+        # Screenshot
+        "Print" = "exec ${pkgs.maim}/bin/maim --select | xclip -selection clipboard -t image/png";
 
         # Programs
         "${cfg.modifier}+Shift+v" = "exec ${pkgs.pavucontrol}/bin/pavucontrol";

@@ -5,16 +5,35 @@
         {
           matches = [
             {
-              node.nick = "Scarlett 2i2 USB"
+              node.name = "~alsa_input.pci.*"
+              cpu.vm.name = "~.*"
+            }
+            {
+              node.name = "~alsa_output.pci.*"
+              cpu.vm.name = "~.*"
             }
           ]
           actions = {
             update-props = {
-              audio.rate = 44100
-              api.acp.probe-rate = 44100
+              api.alsa.period-size            = 2048
+              api.alsa.headroom               = 2048
+              session.suspend-timeout-seconds = 0
             }
           }
         }
+        # {
+        #   matches = [
+        #     {
+        #       node.nick = "Scarlett 2i2 USB"
+        #     }
+        #   ]
+        #   actions = {
+        #     update-props = {
+        #       audio.rate = 48000
+        #       api.acp.probe-rate = 48000
+        #     }
+        #   }
+        # }
       ]
     '';
   };
