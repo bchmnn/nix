@@ -84,7 +84,7 @@ in
       terminal = "${pkgs.alacritty}/bin/alacritty";
       menu = "${pkgs.wofi}/bin/wofi";
       # TODO for some reason bar only works when used with exec
-      bars = [];
+      bars = [ ];
       startup = with pkgs; [
         # TODO activate with systemd prbly requires a graphical.target?
         # { command = "${nixosConfig.systemd.package}/bin/systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
@@ -103,6 +103,7 @@ in
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
         { command = "${system-config-printer}/bin/system-config-printer-applet"; }
         { command = "${emote}/bin/emote"; }
+        { command = "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
       ];
       input = {
         "2:7:SynPS/2_Synaptics_TouchPad" = {

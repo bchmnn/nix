@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixosConfig, ... }:
 let
   check-battery = pkgs.writeShellScript "check-battery" ''
     bat=/sys/class/power_supply/BAT0
@@ -16,6 +16,20 @@ let
       fi
     elif [[ -f "$FILE" ]]; then
       rm $FILE
+    fi
+  '';
+  tailscale-status = pkgs.writeShellScript "tailscale-status" ''
+    if ${nixosConfig.services.tailscale.package}/bin/tailscale status > /dev/null 2>&1; then
+      echo 
+    else
+      echo 
+    fi
+  '';
+  tailscale-toggle = pkgs.writeShellScript "tailscale-toggle" ''
+    if ${nixosConfig.services.tailscale.package}/bin/tailscale status > /dev/null 2>&1; then
+      pkexec ${nixosConfig.services.tailscale.package}/bin/tailscale down
+    else
+      pkexec ${nixosConfig.services.tailscale.package}/bin/tailscale up --accept-routes --exit-node=j4m35-bl0nd
     fi
   '';
 in
@@ -115,6 +129,7 @@ in
           "modules-right": [
             "tray",
             "network",
+            "custom/tailscale",
             "pulseaudio",
             "disk",
             "custom/mem",
@@ -134,6 +149,11 @@ in
             "tooltip-format-disconnected": "Disconnected",
             "tooltip-format-ethernet": "{ifname} ",
             "tooltip-format-wifi": "{essid} ({signalStrength}%) "
+          },
+          "custom/tailscale": {
+            "exec": "${tailscale-status}",
+            "interval": 1,
+            "on-click": "${tailscale-toggle}",
           },
           "pulseaudio": {
             "format": "{volume}% {icon} {format_source}",
@@ -262,6 +282,13 @@ in
 
       window.swaybar #network {
         padding-left: 10px;
+        padding-right: 10px;
+        transition: none;
+        color: black;
+        background: transparent;
+      }
+
+      window.swaybar #custom-tailscale {
         padding-right: 10px;
         transition: none;
         color: black;
