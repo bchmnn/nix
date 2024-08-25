@@ -20,9 +20,9 @@ let
   '';
   tailscale-status = pkgs.writeShellScript "tailscale-status" ''
     if ${nixosConfig.services.tailscale.package}/bin/tailscale status > /dev/null 2>&1; then
-      echo 
+      echo " "
     else
-      echo 
+      echo " "
     fi
   '';
   tailscale-toggle = pkgs.writeShellScript "tailscale-toggle" ''
@@ -40,7 +40,7 @@ in
         {
           "backlight": {
             "device": "intel_backlight",
-            "format": "{percent}% {icon}",
+            "format": "{percent}% {icon} ",
             "format-icons": [
               "󰌶",
               "󱩎",
@@ -56,9 +56,9 @@ in
             ]
           },
           "battery": {
-            "format": "{capacity}% {icon}",
-            "format-alt": "{time} {icon}",
-            "format-charging": "{capacity}% 󰂄",
+            "format": "{capacity}% {icon} ",
+            "format-alt": "{time} {icon} ",
+            "format-charging": "{capacity}% 󰂄 ",
             "format-icons": [
               "󰂃",
               "󰁺",
@@ -72,7 +72,7 @@ in
               "󰂂",
               "󰁹"
             ],
-            "format-plugged": "{capacity}% ",
+            "format-plugged": "{capacity}%  ",
             "on-update": "${check-battery}",
             "states": {
               "critical": 15,
@@ -88,12 +88,17 @@ in
           },
           "custom/mem": {
             "exec": "free -h | awk '/Mem:/{printf $3}'",
-            "format": "{} 󰍛",
+            "format": "{} 󰍛 ",
             "interval": 3,
             "tooltip": false
           },
+          "custom/separator": {
+            "format": "|",
+            "interval": "once",
+            "tooltip": false
+          },
           "disk": {
-            "format": "{specific_free:0.0f}GB ",
+            "format": "{specific_free:0.0f}GB  ",
             "unit": "GB"
           },
           "sway/mode": {
@@ -118,7 +123,6 @@ in
             }
           },
           "layer": "top",
-          "margin": "5 5 5 5",
           "modules-center": [
           ],
           "modules-left": [
@@ -130,25 +134,32 @@ in
             "tray",
             "network",
             "custom/tailscale",
+            "custom/separator",
             "pulseaudio",
+            "custom/separator",
             "disk",
+            "custom/separator",
             "custom/mem",
+            "custom/separator",
             "temperature",
+            "custom/separator",
             "backlight",
+            "custom/separator",
             "battery",
+            "custom/separator",
             "clock"
           ],
           "name": "swaybar",
           "network": {
             "format": "{ifname}",
-            "format-disconnected": "󰈂",
-            "format-ethernet": "eth 󰈁",
-            "format-wifi": "{signalStrength}% ",
+            "format-disconnected": "󰈂 ",
+            "format-ethernet": "eth 󰈁 ",
+            "format-wifi": "{signalStrength}%  ",
             "interval": 1,
-            "tooltip-format": "{ifname} via {gwaddr} 󰈁",
+            "tooltip-format": "{ifname} via {gwaddr} 󰈁 ",
             "tooltip-format-disconnected": "Disconnected",
-            "tooltip-format-ethernet": "{ifname} ",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%) "
+            "tooltip-format-ethernet": "{ifname}  ",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%)  "
           },
           "custom/tailscale": {
             "exec": "${tailscale-status}",
@@ -173,15 +184,14 @@ in
               "portable": ""
             },
             "format-muted": "󰖁 {format_source}",
-            "format-source": "{volume}% ",
-            "format-source-muted": "",
-            "min-length": 13,
+            "format-source": "{volume}%  ",
+            "format-source-muted": " ",
             "on-click": "${pkgs.pavucontrol}/bin/pavucontrol",
             "reverse-scrolling": 1
           },
           "temperature": {
             "critical-threshold": 80,
-            "format": "{temperatureC}°C {icon}",
+            "format": "{temperatureC}°C {icon} ",
             "format-icons": [
               "",
               "",
@@ -204,13 +214,17 @@ in
       window.swaybar,
       window.swaybar * {
         border: none;
-        border-radius: 10px;
         font-family: DejaVuSansM Nerd Font;
-        min-height: 20px;
+        font-size: 13px;
+      }
+
+      window.swaybar #custom-separator {
+        padding-right: 6px;
+        color: #d3d3d3;
       }
 
       window.swaybar#waybar {
-        background: #ffffff;
+        background: linear-gradient(to bottom, #ffffff, #f9f9f9);
       }
 
       window.swaybar#waybar.hidden {
@@ -228,8 +242,8 @@ in
         transition: none;
         color: black;
         background: transparent;
-        padding: 5px;
-        font-size: 18px;
+        padding: 2px;
+        /* font-size: 18px; */
         border-radius: 0px;
       }
 
@@ -238,12 +252,12 @@ in
       }
 
       window.swaybar #workspaces button.persistent {
-        font-size: 12px;
+        /* font-size: 12px; */
       }
 
       window.swaybar #workspaces button.visible {
         color: black;
-        font-size: 18px;
+        /* font-size: 18px; */
       }
 
       window.swaybar #workspaces button.focused {
@@ -256,8 +270,8 @@ in
       }
 
       window.swaybar #window {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 8px;
+        padding-right: 8px;
         transition: none;
         color: black;
         background: transparent;
@@ -275,29 +289,27 @@ in
         margin-right: 10px;
         padding-left: 10px;
         padding-right: 10px;
+        border-radius: 10px;
         transition: none;
         color: white;
         background: rgb(66, 118, 185);
       }
 
       window.swaybar #network {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 6px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #custom-tailscale {
-        padding-right: 10px;
+        padding-right: 6px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #pulseaudio {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
@@ -308,82 +320,72 @@ in
       }
 
       window.swaybar #disk {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #custom-mem {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #temperature {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #temperature.critical {
-          background-color: #eb4d4b;
+        background-color: #eb4d4b;
       }
 
       window.swaybar #backlight {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #battery {
-        padding-left: 10px;
-        padding-right: 10px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       window.swaybar #battery.charging {
-          color: #ffffff;
-          background-color: #26A65B;
+        color: #ffffff;
+        background-color: #26A65B;
       }
 
       window.swaybar #battery.warning:not(.charging) {
-          background-color: #ffbe61;
-          color: black;
+        background-color: #ffbe61;
+        color: black;
       }
 
       window.swaybar #battery.critical:not(.charging) {
-          background-color: #f53c3c;
-          color: #ffffff;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
+        background-color: #f53c3c;
+        color: #ffffff;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
       }
 
       window.swaybar #clock {
-        padding-left: 10px;
-        padding-right: 16px;
+        padding-right: 6px;
+        margin-right: 8px;
         transition: none;
         color: black;
         background: transparent;
       }
 
       @keyframes blink {
-          to {
-              background-color: #ffffff;
-              color: #000000;
-          }
+        to {
+          background-color: #ffffff;
+          color: #000000;
+        }
       }
     '';
   };

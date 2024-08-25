@@ -241,9 +241,6 @@ in
         titlebar = false;
         border = 4;
       };
-      gaps = {
-        inner = 5;
-      };
       colors = {
         focused = {
           border = common.colorschemes.default.active;
