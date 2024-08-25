@@ -12,6 +12,9 @@
         IROH = {
           id = "PJA2MBA-66PQQEO-5KICONS-FGHDH46-YRV2X5Y-47UUP77-QXI2WNS-R33FPAK";
         };
+        J4M35-BL0ND = {
+          id = "R32FFUU-KZXHRUY-GPUOSQV-7ZBDQ5J-3EW2LHG-VAT6VZ7-WRTG46A-7CYCAQL";
+        };
       };
 
       folders = {
@@ -38,6 +41,17 @@
             "IROH"
             "T430"
           ];
+        };
+        "orgfiles" = {
+          path = "~/orgfiles";
+          id = "0f5t9-dl5l5";
+          devices = [
+            "J4M35-BL0ND"
+          ];
+          versioning = {
+            type = "simple";
+            params.keep = "5";
+          };
         };
         "pics" = {
           path = "~/pics";
