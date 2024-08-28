@@ -29,6 +29,7 @@
     gnome.gnome-font-viewer # program that can preview fonts and create thumbnails for fonts
     pppdf
     feh # a light-weight image viewer
+    mpv
     vlc # cross-platform media player and streaming server
     zathura # a highly customizable and functional pdf viewer
     neovide # a simple graphical user interface for neovim
