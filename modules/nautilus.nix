@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: with config.bchmnn; lib.mkIf (gui.enable && gui.flavour != [ ]) {
   programs.nautilus-open-any-terminal = {
     enable = true;
-    terminal = "alacritty";
+    terminal = "kitty";
   };
 
   environment = {

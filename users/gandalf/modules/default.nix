@@ -15,6 +15,7 @@
     ./ssh.nix
     ./tmux.nix
     ./xdg.nix
+    ./yazi.nix
     ./zsh.nix
   ];
 }

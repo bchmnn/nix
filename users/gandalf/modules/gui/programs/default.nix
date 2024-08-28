@@ -6,6 +6,7 @@
     ./discord.nix
     ./games.nix
     ./keyring.nix
+    ./kitty.nix
     ./obs.nix
     ./vscode.nix
     ./zathura.nix

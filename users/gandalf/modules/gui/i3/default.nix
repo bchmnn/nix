@@ -21,7 +21,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    alacritty
     dmenu
     xclip # tool to access the x clipboard from a console application
     wireplumber
@@ -44,7 +43,7 @@ in
     config = {
       modifier = "Mod4";
       bars = [ ];
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${config.programs.kitty.package}/bin/kitty";
       menu = "${config.programs.rofi.package}/bin/rofi -show drun";
       startup = with pkgs; [
         { command = "${start-polybar}"; }
@@ -57,7 +56,7 @@ in
         { command = "${nextcloud-client}/bin/nextcloud"; }
         { command = "${plasma5Packages.kdeconnect-kde}/bin/kdeconnect-indicator"; }
         { command = "${system-config-printer}/bin/system-config-printer-applet"; }
-        { command = "${alacritty}/bin/alacritty --class dropdown --title dropdown"; always = true; }
+        { command = "${config.programs.kitty.package}/bin/kitty --class dropdown --title dropdown"; always = true; }
       ];
       fonts = {
         names = [ common.font ];

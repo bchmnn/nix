@@ -81,7 +81,7 @@ in
     '';
     config = {
       modifier = "Mod4";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${config.programs.kitty.package}/bin/kitty";
       menu = "${pkgs.wofi}/bin/wofi";
       # TODO for some reason bar only works when used with exec
       bars = [ ];
