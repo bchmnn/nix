@@ -1,8 +1,9 @@
 { pkgs, ... }: {
 
   home.packages = with pkgs; [
-    mediainfo
     exiftool
+    mediainfo
+    ueberzugpp
   ];
 
   programs.yazi = {
