@@ -338,7 +338,7 @@ in
       }
 
       window.swaybar #temperature.critical {
-        background-color: #eb4d4b;
+        color: #eb4d4b;
       }
 
       window.swaybar #backlight {

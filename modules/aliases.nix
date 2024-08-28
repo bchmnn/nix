@@ -31,6 +31,6 @@
   drmv = "docker volume rm $(docker volume ls -q)";
 
   lsip = "curl -s 'https://nordvpn.com/wp-admin/admin-ajax.php?action=get_user_info_data' | jq";
-
   xo = "xdg-open";
+  y = "yazi";
 }

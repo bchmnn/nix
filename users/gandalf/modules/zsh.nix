@@ -10,6 +10,7 @@
       theme = "terminalparty";
       plugins = [
         "git"
+        "z"
       ];
     };
 
