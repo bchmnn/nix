@@ -98,13 +98,6 @@
       options = [ "subvol=@" ];
     };
 
-  fileSystems."/media/STORE" =
-    {
-      device = "/dev/disk/by-label/MS";
-      fsType = "btrfs";
-      options = [ "subvol=@" ];
-    };
-
   swapDevices = [{ device = "/swap/swapfile"; }];
 
   networking.useDHCP = lib.mkDefault true;
