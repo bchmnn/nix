@@ -52,8 +52,13 @@ in
     enable = true;
     font.name = common.font;
     font.size = 12;
+    shellIntegration = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
     extraConfig = ''
       include ${kitty-theme-patched}/share/kitty-themes/themes/Alabaster.conf
+      text_composition_strategy legacy
     '';
   };
 }
