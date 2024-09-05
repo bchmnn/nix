@@ -34,7 +34,6 @@
     zathura # a highly customizable and functional pdf viewer
     neovide # a simple graphical user interface for neovim
 
-    obsidian # a powerful knowledge base that works on top of a local folder of plain text markdown files
     gimp # the gnu image manipulation program
     (calibre.override { unrarSupport = true; })
     libreoffice # comprehensive, professional-quality productivity suite, a variant of openoffice.org

@@ -21,11 +21,6 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
-      # allow EOL version electron for obsidian
-      # TODO: remove
-      permittedInsecurePackages = [
-        "electron-25.9.0"
-      ];
     };
   };
 
