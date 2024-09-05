@@ -11,6 +11,27 @@
 
   bchmnn = {
 
+    power = {
+      tlp = {
+        settings = {
+          # performance | powersave
+          CPU_SCALING_GOVERNOR_ON_AC = "performance";
+          CPU_SCALING_GOVERNOR_ON_BAT = "performance";
+          # performance | balance_performance | default | balance_power | power
+          CPU_ENERGY_PERF_POLICY_ON_AC = "power";
+          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+          # performance | balanced | low-power
+          PLATFORM_PROFILE_ON_AC = "low-power";
+          PLATFORM_PROFILE_ON_BAT = "low-power";
+          CPU_MIN_PERF_ON_AC = 0;
+          CPU_MAX_PERF_ON_AC = 100;
+          CPU_MIN_PERF_ON_BAT = 0;
+          CPU_MAX_PERF_ON_BAT = 100;
+        };
+      };
+    };
+
+
     gui = {
       enable = true;
       greeter.enable = false;
@@ -34,5 +55,7 @@
     ai.enable = false;
 
   };
+
+  services.logind.lidSwitch = "ignore";
 
 }
